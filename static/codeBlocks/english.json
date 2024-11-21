@@ -1,0 +1,126 @@
+{
+    "language": "english",
+    "functions": [
+        {
+            "id": 1,
+            "code": "function greetUser(name) { return `Hello, ${name}!`; }"
+        },
+        {
+            "id": 2,
+            "code": "function square(num) { return num * num; }"
+        },
+        {
+            "id": 3,
+            "code": "function isEven(num) { return num % 2 === 0; }"
+        },
+        {
+            "id": 4,
+            "code": "function findLargest(arr) { return Math.max(...arr); }"
+        },
+        {
+            "id": 5,
+            "code": "function reverseString(str) { return str.split('').reverse().join(''); }"
+        },
+        {
+            "id": 6,
+            "code": "function factorial(num) { if (num === 0 || num === 1) return 1; return num * factorial(num - 1); }"
+        },
+        {
+            "id": 7,
+            "code": "function mergeArrays(arr1, arr2) { return [...new Set([...arr1, ...arr2])]; }"
+        },
+        {
+            "id": 8,
+            "code": "function isPalindrome(str) { const cleanedStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase(); return cleanedStr === cleanedStr.split('').reverse().join(''); }"
+        },
+        {
+            "id": 9,
+            "code": "async function fetchData(url) { try { let response = await fetch(url); if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); let data = await response.json(); return data; } catch (error) { console.error('Error fetching data:', error); } }"
+        },
+        {
+            "id": 10,
+            "code": "function debounce(func, delay) { let timeoutId; return function(...args) { clearTimeout(timeoutId); timeoutId = setTimeout(() => { func.apply(this, args); }, delay); }; }"
+        },
+        {
+            "id": 11,
+            "code": "function deepClone(obj) { if (obj === null or typeof obj !== 'object') return obj; if (Array.isArray(obj)) return obj.map(deepClone); const clonedObj = {}; for (const key in obj) { if (obj.hasOwnProperty(key)) { clonedObj[key] = deepClone(obj[key]); } } return clonedObj; }"
+        },
+        {
+            "id": 12,
+            "code": "function throttle(func, limit) { let lastFunc; let lastRan; return function() { const context = this; const args = arguments; if (!lastRan) { func.apply(context, args); lastRan = Date.now(); } else { clearTimeout(lastFunc); lastFunc = setTimeout(function() { if (Date.now() - lastRan >= limit) { func.apply(context, args); lastRan = Date.now(); } }, limit - (Date.now() - lastRan)); } }; }"
+        },
+        {
+            "id": 13,
+            "code": "function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }"
+        },
+        {
+            "id": 14,
+
+            "code": "function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }"
+        },
+        {
+            "id": 15,
+            "code": "function flattenArray(arr) { return arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flattenArray(val) : val), []); }"
+        },
+        {
+            "id": 16,
+            "code": "function generateUUID() { return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) { var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); }); }"
+        },
+        {
+            "id": 17,
+            "code": "function deepEqual(a, b) { if (a === b) return true; if (a == null || typeof a !== 'object' || b == null || typeof b !== 'object') return false; let keysA = Object.keys(a), keysB = Object.keys(b); if (keysA.length !== keysB.length) return false; for (let key of keysA) { if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false; } return true; }"
+        },
+        {
+            "id": 18,
+            "code": "function fibonacci(n) { const fib = [0, 1]; for (let i = 2; i < n; i++) { fib[i] = fib[i - 1] + fib[i - 2]; } return fib; }"
+        },
+        {
+            "id": 19,
+            "code": "function chunkArray(arr, size) { let result = []; for (let i = 0; i < arr.length; i += size) { result.push(arr.slice(i, i + size)); } return result; }"
+        },
+        {
+            "id": 20,
+            "code": "function groupBy(arr, key) { return arr.reduce((result, item) => { (result[item[key]] = result[item[key]] || []).push(item); return result; }, {}); }"
+        },
+        {
+            "id": 21,
+            "code": "function flattenObject(ob) { let toReturn = {}; for (let i in ob) { if (!ob.hasOwnProperty(i)) continue; if ((typeof ob[i]) === 'object') { let flatObject = flattenObject(ob[i]); for (let x in flatObject) { if (!flatObject.hasOwnProperty(x)) continue; toReturn[i + '.' + x] = flatObject[x]; } } else { toReturn[i] = ob[i]; } } return toReturn; }"
+        },
+        {
+            "id": 22,
+            "code": "function debouncePromise(func, delay) { let timeoutId; return function(...args) { return new Promise((resolve, reject) => { clearTimeout(timeoutId); timeoutId = setTimeout(() => { func.apply(this, args).then(resolve).catch(reject); }, delay); }); }; }"
+        },
+        {
+            "id": 23,
+            "code": "function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }"
+        },
+        {
+            "id": 24,
+            "code": "function mergeObjects(obj1, obj2) { return {...obj1, ...obj2}; }"
+        },
+        {
+            "id": 25,
+            "code": "function pipe(...funcs) { return arg => funcs.reduce((acc, func) => func(acc), arg); }"
+        },
+        {
+            "id": 26,
+            "code": "function uniqueElements(arr) { return [...new Set(arr)]; }"
+        },
+        {
+            "id": 27,
+            "code": "function capitalizeWords(str) { return str.replace(/\\b\\w/g, char => char.toUpperCase()); }"
+        },
+        {
+            "id": 28,
+            "code": "function memoize(fn) { const cache = {}; return function(...args) { const key = JSON.stringify(args); if (!cache[key]) { cache[key] = fn(...args); } return cache[key]; }; }"
+        },
+        {
+            "id": 29,
+            "code": "function deepFreeze(obj) { Object.keys(obj).forEach(prop => { if (typeof obj[prop] === 'object' && obj[prop] !== null) deepFreeze(obj[prop]); }); return Object.freeze(obj); }"
+        },
+        {
+            "id": 30,
+            "code": "function debounce(func, wait) { let timeout; return function(...args) { clearTimeout(timeout); timeout = setTimeout(() => func.apply(this, args), wait); }; }"
+        }
+    ]
+}
