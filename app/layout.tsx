@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     title: "CodeType | A minimal typing test",
     description:
         "A minimal typing test to improve your typing skills, choose between random words, quotes or blocks of code",
+    icons: {
+        icon: "./icon.svg",
+    },
 };
 
 export default function RootLayout({
