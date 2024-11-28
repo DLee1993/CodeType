@@ -7,3 +7,15 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+@layer base {
+    body {
+        @apply min-h-screen flex flex-col justify-between items-center;
+    }
+
+    header,
+    main,
+    footer {
+        @apply w-full;
+    }
+}
