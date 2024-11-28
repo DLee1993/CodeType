@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Lexend } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const lexend = Lexend({
+const inter = Inter({
     subsets: ["latin"],
 });
 
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${lexend.className} antialiased`}>{children}</body>
+            <body className={`${inter.className} antialiased`}>{children}</body>
         </html>
     );
 }
