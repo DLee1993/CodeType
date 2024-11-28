@@ -1,126 +1,308 @@
 {
     "language": "english",
-    "functions": [
+    "contents": [
         {
             "id": 1,
-            "code": "function greetUser(name) { return `Hello, ${name}!`; }"
+            "string": "function isPrime(num) { if (num <= 1) return false; for (let i = 2; i < num; i++) { if (num % i === 0) return false; } return true; }"
         },
         {
             "id": 2,
-            "code": "function square(num) { return num * num; }"
+            "string": "function getRandomColor() { let letters = '0123456789ABCDEF'; let color = '#'; for (let i = 0; i < 6; i++) { color += letters[Math.floor(Math.random() * 16)]; } return color; }"
         },
         {
             "id": 3,
-            "code": "function isEven(num) { return num % 2 === 0; }"
+            "string": "function shuffleArray(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [array[i], array[j]] = [array[j], array[i]]; } return array; }"
         },
         {
             "id": 4,
-            "code": "function findLargest(arr) { return Math.max(...arr); }"
+            "string": "function debounce(func, wait) { let timeout; return function(...args) { const context = this; clearTimeout(timeout); timeout = setTimeout(() => func.apply(context, args), wait); }; }"
         },
         {
             "id": 5,
-            "code": "function reverseString(str) { return str.split('').reverse().join(''); }"
+            "string": "function factorial(n) { if (n === 0 || n === 1) return 1; return n * factorial(n - 1); }"
         },
         {
             "id": 6,
-            "code": "function factorial(num) { if (num === 0 || num === 1) return 1; return num * factorial(num - 1); }"
+            "string": "function celsiusToFahrenheit(celsius) { return celsius * 9 / 5 + 32; }"
         },
-        {
-            "id": 7,
-            "code": "function mergeArrays(arr1, arr2) { return [...new Set([...arr1, ...arr2])]; }"
-        },
+        { "id": 7, "string": "function findMax(arr) { return Math.max(...arr); }" },
         {
             "id": 8,
-            "code": "function isPalindrome(str) { const cleanedStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase(); return cleanedStr === cleanedStr.split('').reverse().join(''); }"
+            "string": "function getCurrentDate() { let date = new Date(); let year = date.getFullYear(); let month = ('0' + (date.getMonth() + 1)).slice(-2); let day = ('0' + date.getDate()).slice(-2); return `${year}-${month}-${day}`; }"
         },
         {
             "id": 9,
-            "code": "async function fetchData(url) { try { let response = await fetch(url); if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); let data = await response.json(); return data; } catch (error) { console.error('Error fetching data:', error); } }"
+            "string": "function capitalizeWords(str) { return str.replace(/\\b\\w/g, char => char.toUpperCase()); }"
         },
         {
             "id": 10,
-            "code": "function debounce(func, delay) { let timeoutId; return function(...args) { clearTimeout(timeoutId); timeoutId = setTimeout(() => { func.apply(this, args); }, delay); }; }"
+            "string": "function generateUUID() { return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) { let r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); }); }"
         },
         {
             "id": 11,
-            "code": "function deepClone(obj) { if (obj === null or typeof obj !== 'object') return obj; if (Array.isArray(obj)) return obj.map(deepClone); const clonedObj = {}; for (const key in obj) { if (obj.hasOwnProperty(key)) { clonedObj[key] = deepClone(obj[key]); } } return clonedObj; }"
+            "string": "function fibonacci(n) { if (n <= 1) return n; return fibonacci(n - 1) + fibonacci(n - 2); }"
         },
         {
             "id": 12,
-            "code": "function throttle(func, limit) { let lastFunc; let lastRan; return function() { const context = this; const args = arguments; if (!lastRan) { func.apply(context, args); lastRan = Date.now(); } else { clearTimeout(lastFunc); lastFunc = setTimeout(function() { if (Date.now() - lastRan >= limit) { func.apply(context, args); lastRan = Date.now(); } }, limit - (Date.now() - lastRan)); } }; }"
+            "string": "function sumArray(arr) { return arr.reduce((acc, val) => acc + val, 0); }"
         },
         {
             "id": 13,
-            "code": "function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }"
+            "string": "function reverseString(str) { return str.split('').reverse().join(''); }"
         },
         {
             "id": 14,
-
-            "code": "function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }"
+            "string": "function isPalindrome(str) { const reversed = str.split('').reverse().join(''); return str === reversed; }"
         },
         {
             "id": 15,
-            "code": "function flattenArray(arr) { return arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flattenArray(val) : val), []); }"
+            "string": "function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min)) + min; }"
         },
-        {
-            "id": 16,
-            "code": "function generateUUID() { return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) { var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); }); }"
-        },
-        {
-            "id": 17,
-            "code": "function deepEqual(a, b) { if (a === b) return true; if (a == null || typeof a !== 'object' || b == null || typeof b !== 'object') return false; let keysA = Object.keys(a), keysB = Object.keys(b); if (keysA.length !== keysB.length) return false; for (let key of keysA) { if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false; } return true; }"
-        },
-        {
-            "id": 18,
-            "code": "function fibonacci(n) { const fib = [0, 1]; for (let i = 2; i < n; i++) { fib[i] = fib[i - 1] + fib[i - 2]; } return fib; }"
-        },
+        { "id": 16, "string": "function convertToUpperCase(str) { return str.toUpperCase(); }" },
+        { "id": 17, "string": "function getLength(str) { return str.length; }" },
+        { "id": 18, "string": "function squareNumber(num) { return num * num; }" },
         {
             "id": 19,
-            "code": "function chunkArray(arr, size) { let result = []; for (let i = 0; i < arr.length; i += size) { result.push(arr.slice(i, i + size)); } return result; }"
+            "string": "function getDayOfWeek() { const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; return days[new Date().getDay()]; }"
         },
-        {
-            "id": 20,
-            "code": "function groupBy(arr, key) { return arr.reduce((result, item) => { (result[item[key]] = result[item[key]] || []).push(item); return result; }, {}); }"
-        },
-        {
-            "id": 21,
-            "code": "function flattenObject(ob) { let toReturn = {}; for (let i in ob) { if (!ob.hasOwnProperty(i)) continue; if ((typeof ob[i]) === 'object') { let flatObject = flattenObject(ob[i]); for (let x in flatObject) { if (!flatObject.hasOwnProperty(x)) continue; toReturn[i + '.' + x] = flatObject[x]; } } else { toReturn[i] = ob[i]; } } return toReturn; }"
-        },
-        {
-            "id": 22,
-            "code": "function debouncePromise(func, delay) { let timeoutId; return function(...args) { return new Promise((resolve, reject) => { clearTimeout(timeoutId); timeoutId = setTimeout(() => { func.apply(this, args).then(resolve).catch(reject); }, delay); }); }; }"
-        },
+        { "id": 20, "string": "function isEven(num) { return num % 2 === 0; }" },
+        { "id": 21, "string": "function getRandomNumber() { return Math.random(); }" },
+        { "id": 22, "string": "function toLowerCase(str) { return str.toLowerCase(); }" },
         {
             "id": 23,
-            "code": "function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }"
+            "string": "function removeWhitespace(str) { return str.replace(/\\s+/g, ''); }"
         },
-        {
-            "id": 24,
-            "code": "function mergeObjects(obj1, obj2) { return {...obj1, ...obj2}; }"
-        },
+        { "id": 24, "string": "function sortArray(arr) { return arr.sort((a, b) => a - b); }" },
         {
             "id": 25,
-            "code": "function pipe(...funcs) { return arg => funcs.reduce((acc, func) => func(acc), arg); }"
+            "string": "function getCurrentTime() { let date = new Date(); return date.toTimeString(); }"
         },
-        {
-            "id": 26,
-            "code": "function uniqueElements(arr) { return [...new Set(arr)]; }"
-        },
+        { "id": 26, "string": "function roundNumber(num) { return Math.round(num); }" },
         {
             "id": 27,
-            "code": "function capitalizeWords(str) { return str.replace(/\\b\\w/g, char => char.toUpperCase()); }"
+            "string": "function filterEvenNumbers(arr) { return arr.filter(num => num % 2 === 0); }"
+        },
+        { "id": 28, "string": "function countWords(str) { return str.split(' ').length; }" },
+        { "id": 29, "string": "function checkIncludes(arr, val) { return arr.includes(val); }" },
+        { "id": 30, "string": "function findIndex(arr, val) { return arr.indexOf(val); }" },
+        { "id": 31, "string": "function isArray(arr) { return Array.isArray(arr); }" },
+        { "id": 32, "string": "function getFirstElement(arr) { return arr[0]; }" },
+        { "id": 33, "string": "function getLastElement(arr) { return arr[arr.length - 1]; }" },
+        {
+            "id": 34,
+            "string": "function addClass(element, className) { element.classList.add(className); }"
         },
         {
-            "id": 28,
-            "code": "function memoize(fn) { const cache = {}; return function(...args) { const key = JSON.stringify(args); if (!cache[key]) { cache[key] = fn(...args); } return cache[key]; }; }"
+            "id": 35,
+            "string": "function removeClass(element, className) { element.classList.remove(className); }"
         },
         {
-            "id": 29,
-            "code": "function deepFreeze(obj) { Object.keys(obj).forEach(prop => { if (typeof obj[prop] === 'object' && obj[prop] !== null) deepFreeze(obj[prop]); }); return Object.freeze(obj); }"
+            "id": 36,
+            "string": "function toggleClass(element, className) { element.classList.toggle(className); }"
         },
         {
-            "id": 30,
-            "code": "function debounce(func, wait) { let timeout; return function(...args) { clearTimeout(timeout); timeout = setTimeout(() => func.apply(this, args), wait); }; }"
+            "id": 37,
+            "string": "function createElement(tag) { return document.createElement(tag); }"
+        },
+        {
+            "id": 38,
+            "string": "function removeElement(element) { element.parentNode.removeChild(element); }"
+        },
+        {
+            "id": 39,
+            "string": "function setAttribute(element, attr, value) { element.setAttribute(attr, value); }"
+        },
+        {
+            "id": 40,
+            "string": "function getAttribute(element, attr) { return element.getAttribute(attr); }"
+        },
+        {
+            "id": 41,
+            "string": "function addEventListener(element, event, handler) { element.addEventListener(event, handler); }"
+        },
+        {
+            "id": 42,
+            "string": "function removeEventListener(element, event, handler) { element.removeEventListener(event, handler); }"
+        },
+        {
+            "id": 43,
+            "string": "function dispatchEvent(element, event) { let evt = new Event(event); element.dispatchEvent(evt); }"
+        },
+        {
+            "id": 44,
+            "string": "function appendChild(parent, child) { parent.appendChild(child); }"
+        },
+        {
+            "id": 45,
+            "string": "function removeChild(parent, child) { parent.removeChild(child); }"
+        },
+        {
+            "id": 46,
+            "string": "function setInnerHTML(element, html) { element.innerHTML = html; }"
+        },
+        { "id": 47, "string": "function getInnerHTML(element) { return element.innerHTML; }" },
+        {
+            "id": 48,
+            "string": "function setTextContent(element, text) { element.textContent = text; }"
+        },
+        { "id": 49, "string": "function getTextContent(element) { return element.textContent; }" },
+        {
+            "id": 50,
+            "string": "function setStyle(element, style, value) { element.style[style] = value; }"
+        },
+        {
+            "id": 51,
+            "string": "function getStyle(element, style) { return window.getComputedStyle(element)[style]; }"
+        },
+        { "id": 52, "string": "function hideElement(element) { element.style.display = 'none'; }" },
+        {
+            "id": 53,
+            "string": "function showElement(element) { element.style.display = 'block'; }"
+        },
+        {
+            "id": 54,
+            "string": "function setOpacity(element, opacity) { element.style.opacity = opacity; }"
+        },
+        {
+            "id": 55,
+            "string": "function fadeIn(element, duration) { element.style.transition = `opacity ${duration}ms`; element.style.opacity = 1; }"
+        },
+        {
+            "id": 56,
+            "string": "function fadeOut(element, duration) { element.style.transition = `opacity ${duration}ms`; element.style.opacity = 0; }"
+        },
+        {
+            "id": 57,
+            "string": "function slideUp(element, duration) { element.style.transition = `height ${duration}ms`; element.style.height = 0; }"
+        },
+        {
+            "id": 58,
+            "string": "function slideDown(element, duration) { element.style.transition = `height ${duration}ms`; element.style.height = 'auto'; }"
+        },
+
+        { "id": 59, "string": "function greet() { console.log('Hello!'); }" },
+        { "id": 60, "string": "function add(a, b) { return a + b; }" },
+        { "id": 61, "string": "function multiply(a, b) { return a * b; }" },
+        { "id": 62, "string": "function isEven(num) { return num % 2 === 0; }" },
+        {
+            "id": 63,
+            "string": "function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }"
+        },
+        {
+            "id": 64,
+            "string": "function reverseString(str) { return str.split('').reverse().join(''); }"
+        },
+        {
+            "id": 65,
+            "string": "function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }"
+        },
+        { "id": 66, "string": "function countWords(str) { return str.split(' ').length; }" },
+        {
+            "id": 67,
+            "string": "function isPalindrome(str) { const reversed = str.split('').reverse().join(''); return str === reversed; }"
+        },
+        { "id": 68, "string": "function getMax(arr) { return Math.max(...arr); }" },
+        {
+            "id": 69,
+            "string": "function getDayOfWeek() { const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; return days[new Date().getDay()]; }"
+        },
+        {
+            "id": 70,
+            "string": "function getCurrentDate() { const date = new Date(); const year = date.getFullYear(); const month = String(date.getMonth() + 1).padStart(2, '0'); const day = String(date.getDate()).padStart(2, '0'); return `${year}-${month}-${day}`; }"
+        },
+        {
+            "id": 71,
+            "string": "function factorial(n) { if (n === 0 || n === 1) return 1; return n * factorial(n - 1); }"
+        },
+        {
+            "id": 72,
+            "string": "function celsiusToFahrenheit(celsius) { return (celsius * 9/5) + 32; }"
+        },
+        {
+            "id": 73,
+            "string": "function getRandomHexColor() { const hex = Math.floor(Math.random() * 0xFFFFFF).toString(16); return `#${'000000'.slice(0, 6 - hex.length) + hex}`; }"
+        },
+        {
+            "id": 74,
+            "string": "function debounce(fn, delay) { let timeoutID; return function(...args) { clearTimeout(timeoutID); timeoutID = setTimeout(() => fn.apply(this, args), delay); }; }"
+        },
+        {
+            "id": 75,
+            "string": "function throttle(fn, limit) { let lastFn; let lastRan; return function(...args) { if (!lastRan) { fn.apply(this, args); lastRan = Date.now(); } else { clearTimeout(lastFn); lastFn = setTimeout(() => { if ((Date.now() - lastRan) >= limit) { fn.apply(this, args); lastRan = Date.now(); } }, limit - (Date.now() - lastRan)); } }; }"
+        },
+        {
+            "id": 76,
+            "string": "function deepClone(obj) { return JSON.parse(JSON.stringify(obj)); }"
+        },
+        {
+            "id": 77,
+            "string": "function getQueryParams(url) { const queryParams = {}; const queryString = url.split('?')[1]; if (queryString) { queryString.split('&').forEach(param => { const [key, value] = param.split('='); queryParams[decodeURIComponent(key)] = decodeURIComponent(value); }); } return queryParams; }"
+        },
+        {
+            "id": 78,
+            "string": "function mergeObjects(...objects) { return objects.reduce((acc, obj) => { for (let key in obj) { if (obj.hasOwnProperty(key)) { acc[key] = obj[key]; } } return acc; }, {}); }"
+        },
+
+        { "id": 79, "string": "function square(n) { return n * n; }" },
+        {
+            "id": 80,
+            "string": "function sumArray(arr) { return arr.reduce((sum, num) => sum + num, 0); }"
+        },
+        { "id": 81, "string": "function removeDuplicates(arr) { return [...new Set(arr)]; }" },
+        {
+            "id": 82,
+            "string": "function isPrime(n) { if (n <= 1) return false; for (let i = 2; i <= Math.sqrt(n); i++) { if (n % i === 0) return false; } return true; }"
+        },
+        { "id": 83, "string": "function average(arr) { return sumArray(arr) / arr.length; }" },
+        { "id": 84, "string": "function isNegative(n) { return n < 0; }" },
+        { "id": 85, "string": "function findMin(arr) { return Math.min(...arr); }" },
+        { "id": 86, "string": "function findMax(arr) { return Math.max(...arr); }" },
+        { "id": 87, "string": "function mergeArrays(arr1, arr2) { return [...arr1, ...arr2]; }" },
+        { "id": 88, "string": "function toUpperCase(str) { return str.toUpperCase(); }" },
+        { "id": 89, "string": "function toLowerCase(str) { return str.toLowerCase(); }" },
+        {
+            "id": 90,
+            "string": "function formatCurrency(amount) { return `$${amount.toFixed(2)}`; }"
+        },
+        {
+            "id": 91,
+            "string": "function sortDescending(arr) { return arr.sort((a, b) => b - a); }"
+        },
+        {
+            "id": 92,
+            "string": "function contains(arr, value) { return arr.indexOf(value) !== -1; }"
+        },
+        {
+            "id": 93,
+            "string": "function getUniqueValues(arr) { return arr.filter((item, index) => arr.indexOf(item) === index); }"
+        },
+        {
+            "id": 94,
+            "string": "function flatten(arr) { return arr.reduce((flat, next) => flat.concat(Array.isArray(next) ? flatten(next) : next), []); }"
+        },
+        {
+            "id": 95,
+            "string": "function deepEqual(obj1, obj2) { if (obj1 === obj2) return true; if (typeof obj1 !== 'object' || typeof obj2 !== 'object' || obj1 === null || obj2 === null) return false; const keys1 = Object.keys(obj1); const keys2 = Object.keys(obj2); if (keys1.length !== keys2.length) return false; for (let key of keys1) { if (!keys2.includes(key) || !deepEqual(obj1[key], obj2[key])) return false; } return true; }"
+        },
+        {
+            "id": 96,
+            "string": "function cloneDeep(obj) { if (obj === null || typeof obj !== 'object') return obj; const copy = Array.isArray(obj) ? [] : {}; for (let key in obj) { copy[key] = cloneDeep(obj[key]); } return copy; }"
+        },
+        {
+            "id": 97,
+            "string": "function randomHexColor() { return '#' + Math.floor(Math.random() * 16777215).toString(16); }"
+        },
+        {
+            "id": 98,
+            "string": "function factorialIterative(n) { let result = 1; for (let i = 2; i <= n; i++) { result *= i; } return result; }"
+        },
+        {
+            "id": 99,
+            "string": "function convertToCamelCase(str) { return str.toLowerCase().replace(/[-_\\s](.)/g, (_, group1) => group1.toUpperCase()); }"
+        },
+        {
+            "id": 100,
+            "string": "function fibonacciIterative(n) { if (n <= 1) return n; let a = 0, b = 1; for (let i = 2; i <= n; i++) { let temp = a + b; a = b; b = temp; } return b; }"
         }
     ]
 }

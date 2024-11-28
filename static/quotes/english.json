@@ -1,125 +1,241 @@
 {
     "language": "english",
-    "quotes": [
+    "content": [
         {
             "id": 1,
-            "quote": "The only way to do great work is to love what you do. - Steve Jobs"
+            "string": "The only limit to our realization of tomorrow is our doubts of today."
         },
         {
             "id": 2,
-            "quote": "Success is not how high you have climbed, but how you make a positive difference to the world. - Roy T. Bennett"
+            "string": "In the end, we will remember not the words of our enemies, but the silence of our friends."
         },
         {
             "id": 3,
-            "quote": "In the end, it's not the years in your life that count, it's the life in your years. - Abraham Lincoln"
+            "string": "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful."
         },
-        {
-            "id": 4,
-            "quote": "Life is what happens when you're busy making other plans. - John Lennon"
-        },
-        {
-            "id": 5,
-            "quote": "You must be the change you wish to see in the world. - Mahatma Gandhi"
-        },
-        {
-            "id": 6,
-            "quote": "Happiness is not something ready-made. It comes from your own actions. - Dalai Lama"
-        },
-        {
-            "id": 7,
-            "quote": "Success usually comes to those who are too busy to be looking for it. - Henry David Thoreau"
-        },
+        { "id": 4, "string": "Life is what happens when you're busy making other plans." },
+        { "id": 5, "string": "You only live once, but if you do it right, once is enough." },
+        { "id": 6, "string": "The purpose of our lives is to be happy." },
+        { "id": 7, "string": "Life is what happens to you while you're busy making other plans." },
         {
             "id": 8,
-            "quote": "Don't watch the clock; do what it does. Keep going. - Sam Levenson"
+            "string": "Many of life's failures are people who did not realize how close they were to success when they gave up."
         },
         {
             "id": 9,
-            "quote": "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt"
+            "string": "If life were predictable it would cease to be life, and be without flavor."
         },
-        {
-            "id": 10,
-            "quote": "Hardships often prepare ordinary people for an extraordinary destiny. - C.S. Lewis"
-        },
-        {
-            "id": 11,
-            "quote": "The best way to predict the future is to create it. - Peter Drucker"
-        },
-        {
-            "id": 12,
-            "quote": "Do not wait to strike till the iron is hot; but make it hot by striking. - William Butler Yeats"
-        },
-        {
-            "id": 13,
-            "quote": "Whether you think you can or you think you can't, you're right. - Henry Ford"
-        },
+        { "id": 10, "string": "The best way to predict your future is to create it." },
+        { "id": 11, "string": "Life is short, and it is up to you to make it sweet." },
+        { "id": 12, "string": "Do not let making a living prevent you from making a life." },
+        { "id": 13, "string": "Life itself is the most wonderful fairy tale." },
         {
             "id": 14,
-            "quote": "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela"
+            "string": "The biggest adventure you can take is to live the life of your dreams."
         },
-        {
-            "id": 15,
-            "quote": "Your time is limited, don't waste it living someone else's life. - Steve Jobs"
-        },
-        {
-            "id": 16,
-            "quote": "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success. - James Cameron"
-        },
-        {
-            "id": 17,
-            "quote": "Life is really simple, but we insist on making it complicated. - Confucius"
-        },
+        { "id": 15, "string": "Turn your wounds into wisdom." },
+        { "id": 16, "string": "Happiness is not by chance, but by choice." },
+        { "id": 17, "string": "Life is a long lesson in humility." },
         {
             "id": 18,
-            "quote": "The journey of a thousand miles begins with one step. - Lao Tzu"
+            "string": "In the end, it's not the years in your life that count. It's the life in your years."
         },
-        {
-            "id": 19,
-            "quote": "The only limit to our realization of tomorrow is our doubts of today. - Franklin D. Roosevelt"
-        },
-        {
-            "id": 20,
-            "quote": "Keep your face always toward the sunshine—and shadows will fall behind you. - Walt Whitman"
-        },
-        {
-            "id": 21,
-            "quote": "The best revenge is massive success. - Frank Sinatra"
-        },
-        {
-            "id": 22,
-            "quote": "The only way to achieve the impossible is to believe it is possible. - Charles Kingsleigh"
-        },
+        { "id": 19, "string": "Life is really simple, but we insist on making it complicated." },
+        { "id": 20, "string": "Maybe that's what life is... a wink of the eye and winking stars." },
+        { "id": 21, "string": "The unexamined life is not worth living." },
+        { "id": 22, "string": "Life is trying things to see if they work." },
         {
             "id": 23,
-            "quote": "The harder the conflict, the more glorious the triumph. - Thomas Paine"
+            "string": "Do not take life too seriously. You will never get out of it alive."
         },
-        {
-            "id": 24,
-            "quote": "What lies behind us and what lies before us are tiny matters compared to what lies within us. - Ralph Waldo Emerson"
-        },
+        { "id": 24, "string": "Our life is what our thoughts make it." },
         {
             "id": 25,
-            "quote": "It is never too late to be what you might have been. - George Eliot"
+            "string": "Good friends, good books, and a sleepy conscience: this is the ideal life."
         },
-        {
-            "id": 26,
-            "quote": "If you can dream it, you can do it. - Walt Disney"
-        },
-        {
-            "id": 27,
-            "quote": "Act as if what you do makes a difference. It does. - William James"
-        },
+        { "id": 26, "string": "Life is made of ever so many partings welded together." },
+        { "id": 27, "string": "Life's tragedy is that we get old too soon and wise too late." },
         {
             "id": 28,
-            "quote": "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill"
+            "string": "The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate, to have it make some difference that you have lived and lived well."
         },
-        {
-            "id": 29,
-            "quote": "Perseverance is not a long race; it is many short races one after the other. - Walter Elliot"
-        },
+        { "id": 29, "string": "Life is either a daring adventure or nothing at all." },
         {
             "id": 30,
-            "quote": "In three words I can sum up everything I've learned about life: it goes on. - Robert Frost"
-        }
+            "string": "You have within you right now, everything you need to deal with whatever the world can throw at you."
+        },
+        {
+            "id": 31,
+            "string": "Believe that life is worth living and your belief will help create the fact."
+        },
+        { "id": 32, "string": "The greatest pleasure of life is love." },
+        {
+            "id": 33,
+            "string": "Life is made up of sobs, sniffles, and smiles, with sniffles predominating."
+        },
+        { "id": 34, "string": "Life is too important to be taken seriously." },
+        { "id": 35, "string": "I have found that if you love life, life will love you back." },
+        { "id": 36, "string": "Live in the sunshine, swim the sea, drink the wild air." },
+        {
+            "id": 37,
+            "string": "Life is a succession of lessons which must be lived to be understood."
+        },
+        {
+            "id": 38,
+            "string": "Your time is limited, so don't waste it living someone else's life."
+        },
+        {
+            "id": 39,
+            "string": "Don't settle for what life gives you; make life better and build something."
+        },
+        {
+            "id": 40,
+            "string": "The purpose of life is to live it, to taste experience to the utmost, to reach out eagerly and without fear for newer and richer experience."
+        },
+        { "id": 41, "string": "Live for each second without hesitation." },
+        {
+            "id": 42,
+            "string": "Life is not a problem to be solved, but a reality to be experienced."
+        },
+        {
+            "id": 43,
+            "string": "To live is the rarest thing in the world. Most people exist, that is all."
+        },
+        { "id": 44, "string": "Life is what we make it, always has been, always will be." },
+        { "id": 45, "string": "Life's under no obligation to give us what we expect." },
+        { "id": 46, "string": "Live in the sunshine, swim the sea, drink the wild air." },
+        { "id": 47, "string": "Life is short, and it is up to you to make it sweet." },
+        {
+            "id": 48,
+            "string": "Life is not measured by the number of breaths we take, but by the moments that take our breath away."
+        },
+        { "id": 49, "string": "Keep calm and carry on." },
+        {
+            "id": 50,
+            "string": "Life is short, but it's long enough to ruin any man who wants to be ruined."
+        },
+
+        {
+            "id": 51,
+            "string": "To live is to suffer, to survive is to find some meaning in the suffering."
+        },
+        { "id": 52, "string": "Do what you can, with what you have, where you are." },
+        {
+            "id": 53,
+            "string": "If you want to live a happy life, tie it to a goal, not to people or things."
+        },
+        {
+            "id": 54,
+            "string": "Success is not final, failure is not fatal: it is the courage to continue that counts."
+        },
+        { "id": 55, "string": "Believe you can and you're halfway there." },
+        {
+            "id": 56,
+            "string": "Too many of us are not living our dreams because we are living our fears."
+        },
+        { "id": 57, "string": "I have not failed. I've just found 10,000 ways that won't work." },
+        { "id": 58, "string": "You miss 100% of the shots you don't take." },
+        {
+            "id": 59,
+            "string": "I can't change the direction of the wind, but I can adjust my sails to always reach my destination."
+        },
+        { "id": 60, "string": "Your time is limited, don't waste it living someone else's life." },
+        {
+            "id": 61,
+            "string": "You can't go back and change the beginning, but you can start where you are and change the ending."
+        },
+        {
+            "id": 62,
+            "string": "Challenges are what make life interesting and overcoming them is what makes life meaningful."
+        },
+        { "id": 63, "string": "The only way to do great work is to love what you do." },
+        { "id": 64, "string": "Dream big and dare to fail." },
+        { "id": 65, "string": "It does not matter how slowly you go as long as you do not stop." },
+        { "id": 66, "string": "Life is 10% what happens to us and 90% how we react to it." },
+        { "id": 67, "string": "Your time is limited, don't waste it living someone else's life." },
+        { "id": 68, "string": "The best revenge is massive success." },
+        { "id": 69, "string": "You must be the change you wish to see in the world." },
+        {
+            "id": 70,
+            "string": "What lies behind us and what lies before us are tiny matters compared to what lies within us."
+        },
+        { "id": 71, "string": "Life is either a daring adventure or nothing at all." },
+        {
+            "id": 72,
+            "string": "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment."
+        },
+        {
+            "id": 73,
+            "string": "The purpose of life is to live it, to taste experience to the utmost, to reach out eagerly and without fear for newer and richer experience."
+        },
+        { "id": 74, "string": "You must expect great things of yourself before you can do them." },
+        {
+            "id": 75,
+            "string": "Happiness is not something ready made. It comes from your own actions."
+        },
+        { "id": 76, "string": "Life is what happens when you're busy making other plans." },
+        {
+            "id": 77,
+            "string": "Life is not about finding yourself. Life is about creating yourself."
+        },
+        { "id": 78, "string": "Don't watch the clock; do what it does. Keep going." },
+        {
+            "id": 79,
+            "string": "Keep your face always toward the sunshine — and shadows will fall behind you."
+        },
+        {
+            "id": 80,
+            "string": "Success usually comes to those who are too busy to be looking for it."
+        },
+        { "id": 81, "string": "Don't be afraid to give up the good to go for the great." },
+        { "id": 82, "string": "Life is 10% what happens to us and 90% how we react to it." },
+        { "id": 83, "string": "The best way to get started is to quit talking and begin doing." },
+        { "id": 84, "string": "Don't let yesterday take up too much of today." },
+        {
+            "id": 85,
+            "string": "Success is not how high you have climbed, but how you make a positive difference to the world."
+        },
+        {
+            "id": 86,
+            "string": "Success is walking from failure to failure with no loss of enthusiasm."
+        },
+        {
+            "id": 87,
+            "string": "You know you are on the road to success if you would do your job, and not be paid for it."
+        },
+        { "id": 88, "string": "Act as if what you do makes a difference. It does." },
+        {
+            "id": 89,
+            "string": "Success seems to be connected with action. Successful people keep moving. They make mistakes, but they don't quit."
+        },
+        {
+            "id": 90,
+            "string": "Success is liking yourself, liking what you do, and liking how you do it."
+        },
+        {
+            "id": 91,
+            "string": "The only place where success comes before work is in the dictionary."
+        },
+        {
+            "id": 92,
+            "string": "Happiness is not something ready made. It comes from your own actions."
+        },
+        {
+            "id": 93,
+            "string": "Don't judge each day by the harvest you reap but by the seeds that you plant."
+        },
+        {
+            "id": 94,
+            "string": "The future belongs to those who believe in the beauty of their dreams."
+        },
+        { "id": 95, "string": "I find that the harder I work, the more luck I seem to have." },
+        { "id": 96, "string": "What we think, we become." },
+        { "id": 97, "string": "Opportunities don't happen. You create them." },
+        {
+            "id": 98,
+            "string": "What lies behind us and what lies before us are tiny matters compared to what lies within us."
+        },
+        { "id": 99, "string": "It is never too late to be what you might have been." },
+        { "id": 100, "string": "I attribute my success to this: I never gave or took any excuse." }
     ]
 }
