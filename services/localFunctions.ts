@@ -9,7 +9,7 @@ function getRandomQuote(array: { id: number; string: string }[]) {
 
 export const fetchCode = async (length: number) => {
     try {
-        const response = await fetch("./static/codeBlocks/english.json");
+        const response = await fetch("./codeBlocks/english.json");
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -30,7 +30,7 @@ export const fetchCode = async (length: number) => {
 
 export const fetchQuotes = async (length: number) => {
     try {
-        const response = await fetch("./static/quotes/english.json");
+        const response = await fetch("./quotes/english.json");
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -53,7 +53,7 @@ export const fetchWords = async (length: number) => {
     const words: string[] = [];
 
     try {
-        const response = await fetch("./static/words/english.json");
+        const response = await fetch("./words/english.json");
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
