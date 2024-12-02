@@ -8,6 +8,7 @@ export default function Home() {
     const [testType, setTestType] = useState<string>();
     const [testContent, setTestContent] = useState<string>();
     const [testLength, setTestLength] = useState<number>();
+    const [generateNewTest, setGenerateNewTest] = useState<boolean>();
 
     useEffect(() => {
         const storedTestType = localStorage.getItem("testType");
@@ -46,8 +47,12 @@ export default function Home() {
                     break;
             }
         };
+
         getData();
-    }, [testType, testLength]);
+        setGenerateNewTest(false);
+    }, [testType, testLength, generateNewTest]);
+
+    const refreshText = () => setGenerateNewTest(true);
 
     const changeTestType = (string: string) => {
         setTestType(string);
@@ -133,27 +138,31 @@ export default function Home() {
             <main className="w-11/12 max-w-5xl mx-auto flex flex-col gap-10 items-center">
                 <p className="text-xl min-h-20 leading-relaxed">{testContent}</p>
                 {testContent && (
-                    <button className="group relative">
+                    <button
+                        className="group relative"
+                        onClick={refreshText}
+                        disabled={generateNewTest ? true : false}
+                    >
                         <svg
                             className="size-5"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                         >
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                             <g
                                 id="SVGRepo_tracerCarrier"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                             ></g>
                             <g id="SVGRepo_iconCarrier">
                                 {" "}
                                 <path
                                     d="M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14"
                                     stroke="#000000"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                 ></path>
                             </g>
                         </svg>
