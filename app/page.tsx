@@ -10,6 +10,18 @@ export default function Home() {
     const [testLength, setTestLength] = useState<number>();
     const [generateNewTest, setGenerateNewTest] = useState<boolean>();
 
+    const refreshText = () => setGenerateNewTest(true);
+
+    const changeTestType = (string: string) => {
+        setTestType(string);
+        localStorage.setItem("testType", string);
+    };
+
+    const changeTestLength = (string: string) => {
+        setTestLength(Number(string));
+        localStorage.setItem("testLength", string);
+    };
+
     useEffect(() => {
         const storedTestType = localStorage.getItem("testType");
         const storedTestLength = localStorage.getItem("testLength");
@@ -49,20 +61,19 @@ export default function Home() {
         };
 
         getData();
-        setGenerateNewTest(false);
+
+        setTimeout(() => {
+            setGenerateNewTest(false);
+        }, 1);
     }, [testType, testLength, generateNewTest]);
 
-    const refreshText = () => setGenerateNewTest(true);
-
-    const changeTestType = (string: string) => {
-        setTestType(string);
-        localStorage.setItem("testType", string);
-    };
-
-    const changeTestLength = (string: string) => {
-        setTestLength(Number(string));
-        localStorage.setItem("testLength", string);
-    };
+    useEffect(() => {
+        document?.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && event.key === "Enter") {
+                refreshText();
+            }
+        });
+    });
 
     return (
         <>
@@ -136,50 +147,15 @@ export default function Home() {
                 </div>
             </header>
             <main className="w-11/12 max-w-5xl mx-auto flex flex-col gap-10 items-center">
-                <p className="text-xl min-h-20 leading-relaxed">{testContent}</p>
-                {testContent && (
-                    <button
-                        className="group relative"
-                        onClick={refreshText}
-                        disabled={generateNewTest ? true : false}
-                    >
-                        <svg
-                            className="size-5"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                            <g
-                                id="SVGRepo_tracerCarrier"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            ></g>
-                            <g id="SVGRepo_iconCarrier">
-                                {" "}
-                                <path
-                                    d="M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14"
-                                    stroke="#000000"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                ></path>
-                            </g>
-                        </svg>
-                        <div className="absolute z-10 top-8 left-1/2 -translate-x-1/2 w-40 inline-block bg-background shadow-sm text-foreground py-2 px-2 text-sm rounded-lg invisible group-hover:visible">
-                            restart the test
-                            <div className=" w-6 overflow-hidden absolute -top-3 left-1/2 -translate-x-1/2">
-                                <div className=" h-4 w-4 bg-background rotate-45 transform origin-bottom-left"></div>
-                            </div>
-                        </div>
-                    </button>
-                )}
+                <p className="text-xl min-h-20 max-h-72 overflow-auto leading-relaxed">
+                    {testContent}
+                </p>
             </main>
             <footer className="min-h-20 flex justify-between items-center px-5 sm:px-10 py-5 sm:py-0">
                 {/* when clicked, fetch a new word | quote | codeblock */}
-                <p className="text-background/50">
-                    press <span className="px-2 py-1 bg-foreground text-background/100">tab</span> +{" "}
-                    <span className="px-2 py-1 bg-foreground text-background/100">enter</span> to
+                <p className="text-background/50 text-sm">
+                    press <span className="px-2 py-1 bg-foreground text-background/100">ctrl</span>{" "}
+                    + <span className="px-2 py-1 bg-foreground text-background/100">enter</span> to
                     restart the test
                 </p>
                 <Link href={"https://github.com/DLee1993/CodeType#codetype-guide"} target="_blank">
