@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchCode, fetchQuotes, fetchWords } from "@/services/localFunctions";
 import Link from "next/link";
+import TypeThroughInput from "@/components/TypeThroughInput";
 
 export default function Home() {
     const [testType, setTestType] = useState<string>();
@@ -66,14 +67,6 @@ export default function Home() {
             setGenerateNewTest(false);
         }, 1);
     }, [testType, testLength, generateNewTest]);
-
-    useEffect(() => {
-        document?.addEventListener("keydown", function (event) {
-            if (event.ctrlKey && event.key === "Enter") {
-                refreshText();
-            }
-        });
-    });
 
     return (
         <>
@@ -146,18 +139,10 @@ export default function Home() {
                     </ul>
                 </div>
             </header>
-            <main className="w-11/12 max-w-5xl mx-auto flex flex-col gap-10 items-center">
-                <p className="text-xl min-h-20 max-h-72 overflow-auto leading-relaxed">
-                    {testContent}
-                </p>
+            <main>
+                <TypeThroughInput text={testContent!} refreshText={refreshText} />
             </main>
             <footer className="min-h-20 flex justify-between items-center px-5 sm:px-10 py-5 sm:py-0">
-                {/* when clicked, fetch a new word | quote | codeblock */}
-                <p className="text-background/50 text-sm">
-                    press <span className="px-2 py-1 bg-foreground text-background/100">ctrl</span>{" "}
-                    + <span className="px-2 py-1 bg-foreground text-background/100">enter</span> to
-                    restart the test
-                </p>
                 <Link href={"https://github.com/DLee1993/CodeType#codetype-guide"} target="_blank">
                     help guide
                 </Link>
