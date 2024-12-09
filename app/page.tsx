@@ -4,14 +4,18 @@ import { useEffect, useState } from "react";
 import { fetchCode, fetchQuotes, fetchWords } from "@/services/localFunctions";
 import Link from "next/link";
 import TypeThroughInput from "@/components/TypeThroughInput";
+import ThemeSelector from "@/components/ThemeSelector";
 
 export default function Home() {
     const [testType, setTestType] = useState<string>();
     const [testContent, setTestContent] = useState<string>();
     const [testLength, setTestLength] = useState<number>();
     const [generateNewTest, setGenerateNewTest] = useState<boolean>();
+    const [themeSelector, setThemeSelector] = useState<boolean>(false);
 
     const refreshText = () => setGenerateNewTest(true);
+
+    const toggleThemeSelector = () => setThemeSelector(!themeSelector);
 
     const changeTestType = (string: string) => {
         setTestType(string);
@@ -23,6 +27,15 @@ export default function Home() {
         localStorage.setItem("testLength", string);
     };
 
+    //# Get the stored theme
+    useEffect(() => {
+        const theme = localStorage.getItem("theme");
+        if (theme) {
+            document.body.setAttribute("data-theme", theme);
+        }
+    });
+
+    //# Get the stored args
     useEffect(() => {
         const storedTestType = localStorage.getItem("testType");
         const storedTestLength = localStorage.getItem("testLength");
@@ -40,6 +53,7 @@ export default function Home() {
         }
     }, []);
 
+    //# Get the data
     useEffect(() => {
         const getData = async () => {
             switch (testType) {
@@ -80,7 +94,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 15 ? "underline" : "text-background/50"
+                                testLength === 15 ? "underline" : "text-foreground/50"
                             } cursor-pointer`}
                         >
                             15
@@ -88,7 +102,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 30 ? "underline" : "text-background/50"
+                                testLength === 30 ? "underline" : "text-foreground/50"
                             } cursor-pointer`}
                         >
                             30
@@ -96,7 +110,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 60 ? "underline" : "text-background/50"
+                                testLength === 60 ? "underline" : "text-foreground/50"
                             } cursor-pointer`}
                         >
                             60
@@ -104,18 +118,18 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 120 ? "underline" : "text-background/50"
+                                testLength === 120 ? "underline" : "text-foreground/50"
                             } cursor-pointer`}
                         >
                             120
                         </li>
                     </ul>
-                    <div className="w-[1px] h-5 bg-background "></div>
+                    <div className="w-[1px] h-5 bg-foreground"></div>
                     <ul className="flex justify-center items-center gap-x-4">
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "words" ? "underline" : "text-background/50"
+                                testType === "words" ? "underline" : "text-foreground/50"
                             } cursor-pointer`}
                         >
                             words
@@ -123,7 +137,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "quotes" ? "underline" : "text-background/50"
+                                testType === "quotes" ? "underline" : "text-foreground/50"
                             } cursor-pointer`}
                         >
                             quotes
@@ -131,7 +145,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "code" ? "underline" : "text-background/50"
+                                testType === "code" ? "underline" : "text-foreground/50"
                             } cursor-pointer`}
                         >
                             code
@@ -140,12 +154,17 @@ export default function Home() {
                 </div>
             </header>
             <main>
-                <TypeThroughInput text={testContent!} refreshText={refreshText} />
+                <TypeThroughInput
+                    text={testContent!}
+                    refreshText={refreshText}
+                    resetFocus={themeSelector}
+                />
             </main>
             <footer className="min-h-20 flex justify-between items-center px-5 sm:px-10 py-5 sm:py-0">
                 <Link href={"https://github.com/DLee1993/CodeType#codetype-guide"} target="_blank">
                     help guide
                 </Link>
+                <ThemeSelector toggle={toggleThemeSelector} isOpen={themeSelector}/>
             </footer>
         </>
     );
