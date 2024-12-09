@@ -1,7 +1,11 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from "react";
 import useTyping, { CharStateType, PhaseType } from "react-typing-game-hook";
 
-const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text, refreshText }) => {
+const TypeThroughInput: FC<{ text: string; refreshText: () => void; resetFocus: boolean }> = ({
+    text,
+    refreshText,
+    resetFocus,
+}) => {
     const [duration, setDuration] = useState(0);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isFocused, setIsFocused] = useState(false);
@@ -12,7 +16,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
         actions: { insertTyping, deleteTyping, resetTyping },
     } = useTyping(text, { skipCurrentWordOnSpace: false });
 
-    // set cursor
+    //# set cursor
     const pos = useMemo(() => {
         if (currIndex !== -1 && letterElements.current) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,7 +32,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
         }
     }, [currIndex]);
 
-    //set WPM
+    //# set WPM
     useEffect(() => {
         if (phase === PhaseType.Ended && endTime && startTime) {
             setDuration(Math.floor((endTime - startTime) / 1000));
@@ -37,13 +41,17 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
         }
     }, [phase, startTime, endTime]);
 
+    //# reFocus on the text
     useEffect(() => {
+        if (!resetFocus) {
+            letterElements.current?.focus();
+        }
         if (phase === PhaseType.NotStarted) {
             letterElements.current?.focus();
         }
-    }, [phase]);
+    }, [phase, resetFocus]);
 
-    //handle key presses
+    //# handle key presses
     const handleKeyDown = (letter: string, control: boolean) => {
         if (letter === "Escape") {
             resetTyping();
@@ -74,7 +82,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                         </>
                     </p>
                     <button
-                        className="bg-black rounded-md px-4 py-1 text-white"
+                        className="bg-foreground rounded-md px-4 py-1 text-background"
                         onClick={() => {
                             resetTyping();
                             refreshText();
@@ -101,7 +109,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                             const state = charsState[index];
                             const color =
                                 state === CharStateType.Incomplete
-                                    ? "text-gray-400"
+                                    ? "text-foreground/40"
                                     : state === CharStateType.Correct
                                     ? "text-green-400"
                                     : "text-red-500";
@@ -118,7 +126,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                                 left: pos.left,
                                 top: pos.top,
                             }}
-                            className={`absolute border-l-2 border-black animate-pulsate transition-all duration-100`}
+                            className={`absolute border-l-2 border-foreground animate-pulsate transition-all duration-100`}
                         >
                             &nbsp;
                         </span>
