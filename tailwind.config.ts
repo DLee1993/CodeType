@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { createThemes } from "tw-colors";
 
 export default {
     content: [
@@ -8,11 +9,6 @@ export default {
     ],
     theme: {
         extend: {
-            colors: {
-                background: "hsla(211, 28%, 17%, 1)",
-                foreground: "hsla(222, 15%, 87%, 1)",
-                accent: "hsla(160, 86%, 36%, 1)",
-            },
             animation: {
                 pulsate: "pulsate 1.2s linear infinite",
             },
@@ -24,5 +20,19 @@ export default {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        createThemes(
+            {
+                light: {
+                    background: "#fff",
+                    foreground: "#333333",
+                },
+                dark: {
+                    background: "#333333",
+                    foreground: "#fff",
+                },
+            },
+            { defaultTheme: "light" }
+        ),
+    ],
 } satisfies Config;
