@@ -10,12 +10,22 @@
 
 @layer base {
     body {
-        @apply min-h-screen flex flex-col justify-between items-center;
+        @apply min-h-screen flex flex-col justify-between items-center bg-background text-foreground;
     }
 
     header,
     main,
     footer {
         @apply w-full;
+    }
+
+    #themeSelector::-webkit-scrollbar {
+        @apply w-[6px];
+    }
+    #themeSelector::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+    #themeSelector::-webkit-scrollbar-thumb {
+        @apply bg-foreground rounded-lg;
     }
 }
