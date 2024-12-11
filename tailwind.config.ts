@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import { createThemes } from "tw-colors";
 
 export default {
     content: [
@@ -20,19 +19,5 @@ export default {
             },
         },
     },
-    plugins: [
-        createThemes(
-            {
-                light: {
-                    background: "#fff",
-                    foreground: "#333333",
-                },
-                dark: {
-                    background: "#333333",
-                    foreground: "#fff",
-                },
-            },
-            { defaultTheme: "light" }
-        ),
-    ],
+    plugins: [],
 } satisfies Config;

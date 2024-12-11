@@ -10,7 +10,7 @@
 
 @layer base {
     body {
-        @apply min-h-screen flex flex-col justify-between items-center bg-background text-foreground;
+        @apply min-h-screen flex flex-col justify-between items-center;
     }
 
     header,
@@ -26,6 +26,6 @@
         @apply bg-transparent;
     }
     #themeSelector::-webkit-scrollbar-thumb {
-        @apply bg-foreground rounded-lg;
+        @apply rounded-lg;
     }
 }

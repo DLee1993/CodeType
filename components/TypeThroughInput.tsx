@@ -82,7 +82,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void; resetFocus: 
                         </>
                     </p>
                     <button
-                        className="bg-foreground rounded-md px-4 py-1 text-background"
+                        className="bg-black rounded-md px-4 py-1 text-white"
                         onClick={() => {
                             resetTyping();
                             refreshText();
@@ -109,9 +109,9 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void; resetFocus: 
                             const state = charsState[index];
                             const color =
                                 state === CharStateType.Incomplete
-                                    ? "text-foreground/40"
+                                    ? "text-black/40"
                                     : state === CharStateType.Correct
-                                    ? "text-green-400"
+                                    ? "text-black"
                                     : "text-red-500";
                             return (
                                 <span key={letter + index} className={`${color}`}>
@@ -126,7 +126,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void; resetFocus: 
                                 left: pos.left,
                                 top: pos.top,
                             }}
-                            className={`absolute border-l-2 border-foreground animate-pulsate transition-all duration-100`}
+                            className={`absolute border-l-2 border-black animate-pulsate transition-all duration-100`}
                         >
                             &nbsp;
                         </span>

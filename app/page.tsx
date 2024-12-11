@@ -94,7 +94,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 15 ? "underline" : "text-foreground/50"
+                                testLength === 15 ? "underline" : "text-black/50"
                             } cursor-pointer`}
                         >
                             15
@@ -102,7 +102,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 30 ? "underline" : "text-foreground/50"
+                                testLength === 30 ? "underline" : "text-black/50"
                             } cursor-pointer`}
                         >
                             30
@@ -110,7 +110,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 60 ? "underline" : "text-foreground/50"
+                                testLength === 60 ? "underline" : "text-black/50"
                             } cursor-pointer`}
                         >
                             60
@@ -118,18 +118,18 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 120 ? "underline" : "text-foreground/50"
+                                testLength === 120 ? "underline" : "text-black/50"
                             } cursor-pointer`}
                         >
                             120
                         </li>
                     </ul>
-                    <div className="w-[1px] h-5 bg-foreground"></div>
+                    <div className="w-[1px] h-5 bg-black"></div>
                     <ul className="flex justify-center items-center gap-x-4">
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "words" ? "underline" : "text-foreground/50"
+                                testType === "words" ? "underline" : "text-black/50"
                             } cursor-pointer`}
                         >
                             words
@@ -137,7 +137,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "quotes" ? "underline" : "text-foreground/50"
+                                testType === "quotes" ? "underline" : "text-black/50"
                             } cursor-pointer`}
                         >
                             quotes
@@ -145,7 +145,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "code" ? "underline" : "text-foreground/50"
+                                testType === "code" ? "underline" : "text-black/50"
                             } cursor-pointer`}
                         >
                             code
@@ -164,7 +164,7 @@ export default function Home() {
                 <Link href={"https://github.com/DLee1993/CodeType#codetype-guide"} target="_blank">
                     help guide
                 </Link>
-                <ThemeSelector toggle={toggleThemeSelector} isOpen={themeSelector}/>
+                <ThemeSelector toggle={toggleThemeSelector} isOpen={themeSelector} />
             </footer>
         </>
     );
