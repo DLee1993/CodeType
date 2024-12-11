@@ -17,6 +17,11 @@ export default {
                     "50%": { opacity: "0.75", scale: "0.9" },
                 },
             },
+            colors: {
+                background: "var(--background-color)",
+                foreground: "var(--color)",
+                accent: "var(--accent-color)",
+            },
         },
     },
     plugins: [],
