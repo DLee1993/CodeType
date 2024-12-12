@@ -5,6 +5,7 @@ import { fetchCode, fetchQuotes, fetchWords } from "@/services/localFunctions";
 import Link from "next/link";
 import TypeThroughInput from "@/components/TypeThroughInput";
 import ThemeSelector from "@/components/ThemeSelector";
+import { useTheme } from "next-themes";
 
 export default function Home() {
     const [testType, setTestType] = useState<string>();
@@ -12,6 +13,7 @@ export default function Home() {
     const [testLength, setTestLength] = useState<number>();
     const [generateNewTest, setGenerateNewTest] = useState<boolean>();
     const [themeSelector, setThemeSelector] = useState<boolean>(false);
+    const { setTheme } = useTheme();
 
     const refreshText = () => setGenerateNewTest(true);
 
@@ -31,7 +33,9 @@ export default function Home() {
     useEffect(() => {
         const theme = localStorage.getItem("theme");
         if (theme) {
-            document.body.setAttribute("data-theme", theme);
+            setTheme(theme);
+        } else {
+            setTheme("light-theme");
         }
     });
 
@@ -94,7 +98,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 15 ? "underline" : "text-black/50"
+                                testLength === 15 ? "underline" : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             15
@@ -102,7 +106,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 30 ? "underline" : "text-black/50"
+                                testLength === 30 ? "underline" : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             30
@@ -110,7 +114,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 60 ? "underline" : "text-black/50"
+                                testLength === 60 ? "underline" : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             60
@@ -118,18 +122,18 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 120 ? "underline" : "text-black/50"
+                                testLength === 120 ? "underline" : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             120
                         </li>
                     </ul>
-                    <div className="w-[1px] h-5 bg-black"></div>
+                    <div className="w-[1px] h-5 bg-foreground opacity-75"></div>
                     <ul className="flex justify-center items-center gap-x-4">
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "words" ? "underline" : "text-black/50"
+                                testType === "words" ? "underline" : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             words
@@ -137,7 +141,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "quotes" ? "underline" : "text-black/50"
+                                testType === "quotes" ? "underline" : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             quotes
@@ -145,7 +149,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "code" ? "underline" : "text-black/50"
+                                testType === "code" ? "underline" : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             code

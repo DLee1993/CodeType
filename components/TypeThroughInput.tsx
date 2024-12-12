@@ -70,19 +70,19 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void; resetFocus: 
                 <section className="flex flex-col justify-center items-center gap-10">
                     <h2 className="text-lg font-semibold">Congratulations!</h2>
 
-                    <p className="min-h-5">
+                    <p className="min-h-5 flex flex-col gap-y-4">
                         <>
                             <span className="mr-4">
-                                WPM: {Math.round(((60 / duration) * correctChar) / 5)}
+                                <span className="text-accent">WPM:</span> {Math.round(((60 / duration) * correctChar) / 5)}
                             </span>
                             <span className="mr-4">
-                                Accuracy: {((correctChar / text.length) * 100).toFixed(2)}%
+                                <span className="text-accent">Accuracy:</span> {((correctChar / text.length) * 100).toFixed(2)}%
                             </span>
-                            <span className="mr-4">Duration: {duration}s</span>
+                            <span className="mr-4"><span className="text-accent">Duration:</span> {duration}s</span>
                         </>
                     </p>
                     <button
-                        className="bg-black rounded-md px-4 py-1 text-white"
+                        className="bg-foreground text-background rounded-md px-4 py-1"
                         onClick={() => {
                             resetTyping();
                             refreshText();
@@ -109,9 +109,9 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void; resetFocus: 
                             const state = charsState[index];
                             const color =
                                 state === CharStateType.Incomplete
-                                    ? "text-black/40"
+                                    ? "text-foreground opacity-50"
                                     : state === CharStateType.Correct
-                                    ? "text-black"
+                                    ? "text-accent"
                                     : "text-red-500";
                             return (
                                 <span key={letter + index} className={`${color}`}>
@@ -126,7 +126,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void; resetFocus: 
                                 left: pos.left,
                                 top: pos.top,
                             }}
-                            className={`absolute border-l-2 border-black animate-pulsate transition-all duration-100`}
+                            className={`absolute border-l-2 border-accent animate-pulsate transition-all duration-100`}
                         >
                             &nbsp;
                         </span>

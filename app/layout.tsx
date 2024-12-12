@@ -22,9 +22,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={`${inter.className} antialiased`}>
-                <Provider>{children}</Provider>
+        <html lang="en" suppressHydrationWarning>
+            <body className={`antialiased ${inter.className}`}>
+                <Provider>
+                    <main className="min-h-screen flex flex-col justify-between items-center bg-background text-foreground">
+                        {children}
+                    </main>
+                </Provider>
             </body>
         </html>
     );
