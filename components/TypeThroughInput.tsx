@@ -11,7 +11,10 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
         states: { charsState, currIndex, phase, correctChar, startTime, endTime },
         actions: { insertTyping, deleteTyping, resetTyping },
     } = useTyping(text, { skipCurrentWordOnSpace: false });
-
+    
+    //# Re focus on typing element
+    document.body.addEventListener("click", () => letterElements.current?.focus());
+    
     //# set cursor
     const pos = useMemo(() => {
         if (currIndex !== -1 && letterElements.current) {
@@ -36,6 +39,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
             setDuration(0);
         }
     }, [phase, startTime, endTime]);
+
 
     //# reFocus on the text
     useEffect(() => {
