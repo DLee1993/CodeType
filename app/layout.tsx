@@ -21,11 +21,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <body className={`antialiased ${inter.className}`}>
-                <main className="min-h-screen flex flex-col justify-between items-center bg-background text-foreground">
-                    {children}
-                </main>
+        <html lang="en" className="light-theme">
+            <body
+                className={`min-h-screen flex flex-col justify-between items-center bg-background text-foreground antialiased ${inter.className}`}
+            >
+                {children}
             </body>
         </html>
     );
