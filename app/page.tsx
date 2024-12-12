@@ -4,20 +4,14 @@ import { useEffect, useState } from "react";
 import { fetchCode, fetchQuotes, fetchWords } from "@/services/localFunctions";
 import Link from "next/link";
 import TypeThroughInput from "@/components/TypeThroughInput";
-import ThemeSelector from "@/components/ThemeSelector";
-import { useTheme } from "next-themes";
 
 export default function Home() {
     const [testType, setTestType] = useState<string>();
     const [testContent, setTestContent] = useState<string>();
     const [testLength, setTestLength] = useState<number>();
     const [generateNewTest, setGenerateNewTest] = useState<boolean>();
-    const [themeSelector, setThemeSelector] = useState<boolean>(false);
-    const { setTheme } = useTheme();
 
     const refreshText = () => setGenerateNewTest(true);
-
-    const toggleThemeSelector = () => setThemeSelector(!themeSelector);
 
     const changeTestType = (string: string) => {
         setTestType(string);
@@ -28,16 +22,6 @@ export default function Home() {
         setTestLength(Number(string));
         localStorage.setItem("testLength", string);
     };
-
-    //# Get the stored theme
-    useEffect(() => {
-        const theme = localStorage.getItem("theme");
-        if (theme) {
-            setTheme(theme);
-        } else {
-            setTheme("light-theme");
-        }
-    });
 
     //# Get the stored args
     useEffect(() => {
@@ -158,17 +142,12 @@ export default function Home() {
                 </div>
             </header>
             <main>
-                <TypeThroughInput
-                    text={testContent!}
-                    refreshText={refreshText}
-                    resetFocus={themeSelector}
-                />
+                <TypeThroughInput text={testContent!} refreshText={refreshText} />
             </main>
             <footer className="min-h-20 flex justify-between items-center px-5 sm:px-10 py-5 sm:py-0">
                 <Link href={"https://github.com/DLee1993/CodeType#codetype-guide"} target="_blank">
                     help guide
                 </Link>
-                <ThemeSelector toggle={toggleThemeSelector} isOpen={themeSelector} />
             </footer>
         </>
     );

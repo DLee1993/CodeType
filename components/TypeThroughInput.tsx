@@ -1,11 +1,7 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from "react";
 import useTyping, { CharStateType, PhaseType } from "react-typing-game-hook";
 
-const TypeThroughInput: FC<{ text: string; refreshText: () => void; resetFocus: boolean }> = ({
-    text,
-    refreshText,
-    resetFocus,
-}) => {
+const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text, refreshText }) => {
     const [duration, setDuration] = useState(0);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isFocused, setIsFocused] = useState(false);
@@ -43,13 +39,10 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void; resetFocus: 
 
     //# reFocus on the text
     useEffect(() => {
-        if (!resetFocus) {
-            letterElements.current?.focus();
-        }
         if (phase === PhaseType.NotStarted) {
             letterElements.current?.focus();
         }
-    }, [phase, resetFocus]);
+    }, [phase]);
 
     //# handle key presses
     const handleKeyDown = (letter: string, control: boolean) => {
@@ -73,12 +66,16 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void; resetFocus: 
                     <p className="min-h-5 flex flex-col gap-y-4">
                         <>
                             <span className="mr-4">
-                                <span className="text-accent">WPM:</span> {Math.round(((60 / duration) * correctChar) / 5)}
+                                <span className="text-accent">WPM:</span>{" "}
+                                {Math.round(((60 / duration) * correctChar) / 5)}
                             </span>
                             <span className="mr-4">
-                                <span className="text-accent">Accuracy:</span> {((correctChar / text.length) * 100).toFixed(2)}%
+                                <span className="text-accent">Accuracy:</span>{" "}
+                                {((correctChar / text.length) * 100).toFixed(2)}%
                             </span>
-                            <span className="mr-4"><span className="text-accent">Duration:</span> {duration}s</span>
+                            <span className="mr-4">
+                                <span className="text-accent">Duration:</span> {duration}s
+                            </span>
                         </>
                     </p>
                     <button
