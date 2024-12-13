@@ -96,6 +96,13 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                     onBlur={() => setIsFocused(false)}
                     className={`text-xl outline-none relative hover:cursor-text`}
                 >
+                    <div
+                        className={`${
+                            isFocused && "hidden"
+                        } absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-accent`}
+                    >
+                        Click here to focus
+                    </div>
                     <article
                         ref={letterElements}
                         className="tracking-wide pointer-events-none select-none mb-4 focus-visible:outline-0"
