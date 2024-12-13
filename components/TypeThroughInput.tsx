@@ -11,10 +11,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
         states: { charsState, currIndex, phase, correctChar, startTime, endTime },
         actions: { insertTyping, deleteTyping, resetTyping },
     } = useTyping(text, { skipCurrentWordOnSpace: false });
-    
-    //# Re focus on typing element
-    document.body.addEventListener("click", () => letterElements.current?.focus());
-    
+
     //# set cursor
     const pos = useMemo(() => {
         if (currIndex !== -1 && letterElements.current) {
@@ -39,7 +36,6 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
             setDuration(0);
         }
     }, [phase, startTime, endTime]);
-
 
     //# reFocus on the text
     useEffect(() => {
@@ -67,7 +63,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                 <section className="flex flex-col justify-center items-center gap-10">
                     <h2 className="text-lg font-semibold">Congratulations!</h2>
 
-                    <p className="min-h-5 flex flex-col gap-y-4">
+                    <p className="min-h-5 flex gap-x-4 my-10">
                         <>
                             <span className="mr-4">
                                 <span className="text-accent">WPM:</span>{" "}
@@ -83,7 +79,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                         </>
                     </p>
                     <button
-                        className="bg-foreground text-background rounded-md px-4 py-1"
+                        className="bg-background border border-accent text-foreground rounded-md px-6 py-2"
                         onClick={() => {
                             resetTyping();
                             refreshText();
@@ -104,7 +100,6 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                         ref={letterElements}
                         className="tracking-wide pointer-events-none select-none mb-4 focus-visible:outline-0"
                         tabIndex={0}
-                        autoFocus
                     >
                         {text?.split("").map((letter, index) => {
                             const state = charsState[index];
@@ -115,7 +110,10 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                                     ? "text-accent"
                                     : "text-red-500";
                             return (
-                                <span key={letter + index} className={`${color}`}>
+                                <span
+                                    key={letter + index}
+                                    className={`${color} ${!isFocused && "blur-sm"}`}
+                                >
                                     {letter}
                                 </span>
                             );
@@ -127,7 +125,9 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                                 left: pos.left,
                                 top: pos.top,
                             }}
-                            className={`absolute border-l-2 border-accent animate-pulsate transition-all duration-100`}
+                            className={`${
+                                !isFocused && "hidden"
+                            } block absolute border-l-2 border-accent animate-pulsate transition-all duration-75`}
                         >
                             &nbsp;
                         </span>
