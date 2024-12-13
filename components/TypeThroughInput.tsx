@@ -98,8 +98,8 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                 >
                     <div
                         className={`${
-                            isFocused && "hidden"
-                        } absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-accent`}
+                            !isFocused && text ? "visible" : "hidden"
+                        } w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-accent`}
                     >
                         Click here to focus
                     </div>
