@@ -2,10 +2,11 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { Themes } from "@/themes";
 
 type Props = {
+    currentTheme: string | undefined;
     setTheme: Dispatch<SetStateAction<string>>;
 };
 
-export default function ThemeSelector({ setTheme }: Props) {
+export default function ThemeSelector({ currentTheme, setTheme }: Props) {
     const [selectThemeOpen, isSelectThemeOpen] = useState<boolean>(false);
 
     return (
@@ -40,6 +41,12 @@ export default function ThemeSelector({ setTheme }: Props) {
                                 backgroundColor: `${theme.background}`,
                                 color: `${theme.foreground}`,
                                 border: `1px solid ${theme.accent}`,
+                                outline: `1.5px solid ${
+                                    currentTheme === theme.name
+                                        ? `${theme.accent}`
+                                        : `${theme.accent}`
+                                }`,
+                                outlineOffset: `${currentTheme === theme.name ? "5px" : "0px"}`,
                             }}
                         >
                             {theme.name.slice(0, -6)}
