@@ -27,7 +27,7 @@ export const Themes = [
         accent: "#78C5D6",
     },
     { name: "vintage-rose-theme", background: "#301934", foreground: "#F5C7C7", accent: "#D28C8C" },
-    { name: "Steel Blue-theme", background: "#243447", foreground: "#BFD7EA", accent: "#2A9DF4" },
+    { name: "steel-blue-theme", background: "#243447", foreground: "#BFD7EA", accent: "#2A9DF4" },
     {
         name: "tropical-paradise-theme",
         background: "#192A2F",
