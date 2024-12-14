@@ -25,7 +25,7 @@ export default function HelpGuide() {
                         X
                     </button>
                 </aside>
-                <section className="ml-10 my-10 space-y-10">
+                <section className="md:ml-10 my-10 space-y-10">
                     <aside>
                         <h3 className="mb-5 text-accent font-bold">Commands</h3>
                         <ul className="list-disc ml-10 space-y-5">
