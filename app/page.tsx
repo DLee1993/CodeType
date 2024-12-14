@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { fetchCode, fetchQuotes, fetchWords } from "@/services/localFunctions";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import TypeThroughInput from "@/components/TypeThroughInput";
 import ThemeSelector from "@/components/ThemeSelector";
 import HelpGuide from "@/components/HelpGuide";
@@ -13,7 +12,6 @@ export default function Home() {
     const [testContent, setTestContent] = useState<string>();
     const [testLength, setTestLength] = useState<number>();
     const [generateNewTest, setGenerateNewTest] = useState<boolean>();
-    const { theme, setTheme } = useTheme();
 
     const refreshText = () => setGenerateNewTest(true);
 
@@ -26,13 +24,6 @@ export default function Home() {
         setTestLength(Number(string));
         localStorage.setItem("testLength", string);
     };
-
-    //# Set the theme
-    useEffect(() => {
-        if (theme) {
-            document.documentElement.className = theme;
-        }
-    }, [theme]);
 
     //# Get the stored args and add the transition classes after mounting
     useEffect(() => {
@@ -86,12 +77,12 @@ export default function Home() {
 
     return (
         <>
-            <header className="min-h-20 flex flex-col sm:flex-row justify-between items-start sm:items-center px-5">
+            <header className="min-h-20 flex flex-wrap justify-between items-center p-5 gap-y-5">
                 <div>
                     <h1 className="text-lg font-semibold">Code-type</h1>
                     <sup>A minimalistic typing test</sup>
                 </div>
-                <div className="w-full sm:w-auto flex justify-center items-center gap-x-4 mt-5 sm:mt-0">
+                <div className="w-full max-w-sm sm:w-auto flex justify-between items-center gap-x-4">
                     <ul className="flex justify-center items-center gap-x-4">
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
@@ -162,7 +153,7 @@ export default function Home() {
                 <section className="flex justify-center items-center gap-2">
                     <HelpGuide />
                     <p>/</p>
-                    <ThemeSelector currentTheme={theme} setTheme={setTheme} />
+                    <ThemeSelector />
                 </section>
                 <Link
                     href={"https://github.com/DLee1993/CodeType#codetype-guide"}
