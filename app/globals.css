@@ -14,28 +14,18 @@
     footer {
         @apply w-full;
     }
-
-    #themeSelector::-webkit-scrollbar {
-        @apply w-[6px];
-    }
-    #themeSelector::-webkit-scrollbar-track {
-        @apply bg-transparent;
-    }
-    #themeSelector::-webkit-scrollbar-thumb {
-        @apply rounded-lg;
-    }
 }
 
 /* Light theme */
 .light-theme {
-    --background: "#FFFFFF";
-    --color: "#333333";
-    --accent-color: "#9ca3af";
+    --background-color: #ffffff;
+    --color: #333333;
+    --accent-color: #0141ae;
 }
 .dark-theme {
-    --background: "#030712";
-    --color: "#FFFFFF";
-    --accent-color: "#9ca3af";
+    --background-color: #030712;
+    --color: #ffffff;
+    --accent-color: #c1a502;
 }
 .ocean-blue-theme {
     --background-color: #1b3a4b;
@@ -127,7 +117,7 @@
     --color: #c5d8ff;
     --accent-color: #88bfff;
 }
-.crimson-theme {
+.crimson-tide-theme {
     --background-color: #2e0000;
     --color: #ffdada;
     --accent-color: #ff6f61;
