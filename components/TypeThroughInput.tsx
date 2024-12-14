@@ -3,7 +3,6 @@ import useTyping, { CharStateType, PhaseType } from "react-typing-game-hook";
 
 const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text, refreshText }) => {
     const [duration, setDuration] = useState(0);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isFocused, setIsFocused] = useState(false);
     const letterElements = useRef<HTMLDivElement>(null);
 
@@ -12,8 +11,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
         actions: { insertTyping, deleteTyping, resetTyping },
     } = useTyping(text, { skipCurrentWordOnSpace: false });
 
-    //# set cursor
-    const pos = useMemo(() => {
+    const cursorPosition = useMemo(() => {
         if (currIndex !== -1 && letterElements.current) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const spanref: any = letterElements.current.children[currIndex];
@@ -28,7 +26,19 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
         }
     }, [currIndex]);
 
-    //# set WPM
+    const handleKeyDown = (letter: string, control: boolean) => {
+        if (letter === "Escape") {
+            resetTyping();
+        } else if (letter === "Enter") {
+            refreshText();
+        } else if (letter === "Backspace") {
+            deleteTyping(control);
+        } else if (letter.length === 1) {
+            insertTyping(letter);
+        }
+    };
+
+    //# set words per minute
     useEffect(() => {
         if (phase === PhaseType.Ended && endTime && startTime) {
             setDuration(Math.floor((endTime - startTime) / 1000));
@@ -43,19 +53,6 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
             letterElements.current?.focus();
         }
     }, [phase]);
-
-    //# handle key presses
-    const handleKeyDown = (letter: string, control: boolean) => {
-        if (letter === "Escape") {
-            resetTyping();
-        } else if (letter === "Enter") {
-            refreshText();
-        } else if (letter === "Backspace") {
-            deleteTyping(control);
-        } else if (letter.length === 1) {
-            insertTyping(letter);
-        }
-    };
 
     return (
         <section className="w-11/12 max-w-4xl mx-auto flex flex-col gap-10 items-center">
@@ -79,7 +76,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                         </>
                     </p>
                     <button
-                        className="bg-background border border-accent text-foreground rounded-md px-6 py-2"
+                        className="bg-background border border-accent text-foreground rounded-md px-6 py-2 hover:bg-accent hover:transition-colors"
                         onClick={() => {
                             resetTyping();
                             refreshText();
@@ -99,7 +96,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                     <div
                         className={`${
                             !isFocused && text ? "visible" : "hidden"
-                        } w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-accent`}
+                        } w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-foreground`}
                     >
                         Click here to focus
                     </div>
@@ -112,7 +109,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                             const state = charsState[index];
                             const color =
                                 state === CharStateType.Incomplete
-                                    ? "text-foreground opacity-50"
+                                    ? "text-foreground"
                                     : state === CharStateType.Correct
                                     ? "text-accent"
                                     : "text-red-500";
@@ -129,8 +126,8 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                     {phase !== PhaseType.Ended && text ? (
                         <span
                             style={{
-                                left: pos.left,
-                                top: pos.top,
+                                left: cursorPosition.left,
+                                top: cursorPosition.top,
                             }}
                             className={`${
                                 !isFocused && "hidden"
