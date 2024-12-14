@@ -1,13 +1,24 @@
-import { Dispatch, SetStateAction, useState } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 import { Themes } from "@/themes";
+import { useTheme } from "next-themes";
 
-type Props = {
-    currentTheme: string | undefined;
-    setTheme: Dispatch<SetStateAction<string>>;
-};
-
-export default function ThemeSelector({ currentTheme, setTheme }: Props) {
+export default function ThemeSelector() {
     const [selectThemeOpen, isSelectThemeOpen] = useState<boolean>(false);
+    const [mounted, setMounted] = useState(false);
+    const { theme, setTheme } = useTheme();
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    //# Set the theme
+    useEffect(() => {
+        if (theme) {
+            document.documentElement.className = theme;
+        }
+    }, [theme]);
 
     return (
         <section>
@@ -32,24 +43,24 @@ export default function ThemeSelector({ currentTheme, setTheme }: Props) {
                     </button>
                 </aside>
                 <ul className="p-5 flex gap-4 flex-wrap mt-10">
-                    {Themes.map((theme, i) => (
+                    {Themes.map((themeItem, i) => (
                         <li
                             key={i}
                             className="flex justify-center items-center cursor-pointer rounded-md w-40 h-20"
-                            onClick={() => setTheme(theme.name)}
+                            onClick={() => setTheme(themeItem.name)}
                             style={{
-                                backgroundColor: `${theme.background}`,
-                                color: `${theme.foreground}`,
-                                border: `1px solid ${theme.accent}`,
-                                outline: `1.5px solid ${
-                                    currentTheme === theme.name
-                                        ? `${theme.accent}`
-                                        : `${theme.accent}`
+                                backgroundColor: `${themeItem.background}`,
+                                color: `${themeItem.foreground}`,
+                                border: `1px solid ${themeItem.accent}`,
+                                outline: `1px solid ${
+                                    mounted && theme === themeItem.name && `${themeItem.accent}`
                                 }`,
-                                outlineOffset: `${currentTheme === theme.name ? "5px" : "0px"}`,
+                                outlineOffset: `${
+                                    mounted && theme === themeItem.name ? "5px" : "0px"
+                                }`,
                             }}
                         >
-                            {theme.name.slice(0, -6)}
+                            {themeItem.name.slice(0, -6)}
                         </li>
                     ))}
                 </ul>
