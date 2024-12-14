@@ -96,9 +96,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 15
-                                    ? "underline text-accent"
-                                    : "text-foreground opacity-50"
+                                testLength === 15 ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             15
@@ -106,9 +104,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 30
-                                    ? "underline text-accent"
-                                    : "text-foreground opacity-50"
+                                testLength === 30 ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             30
@@ -116,9 +112,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 60
-                                    ? "underline text-accent"
-                                    : "text-foreground opacity-50"
+                                testLength === 60 ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             60
@@ -126,9 +120,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 120
-                                    ? "underline text-accent"
-                                    : "text-foreground opacity-50"
+                                testLength === 120 ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             120
@@ -139,9 +131,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "words"
-                                    ? "underline text-accent"
-                                    : "text-foreground opacity-50"
+                                testType === "words" ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             words
@@ -149,9 +139,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "quotes"
-                                    ? "underline text-accent"
-                                    : "text-foreground opacity-50"
+                                testType === "quotes" ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             quotes
@@ -159,9 +147,7 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "code"
-                                    ? "underline text-accent"
-                                    : "text-foreground opacity-50"
+                                testType === "code" ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             code
@@ -176,7 +162,7 @@ export default function Home() {
                 <section className="flex justify-center items-center gap-2">
                     <HelpGuide />
                     <p>/</p>
-                    <ThemeSelector setTheme={setTheme} />
+                    <ThemeSelector currentTheme={theme} setTheme={setTheme} />
                 </section>
                 <Link
                     href={"https://github.com/DLee1993/CodeType#codetype-guide"}
