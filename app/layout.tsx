@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -21,11 +22,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="light-theme">
+        <html lang="en" suppressHydrationWarning>
             <body
                 className={`min-h-screen flex flex-col justify-between items-center bg-background text-foreground antialiased ${inter.className}`}
             >
-                {children}
+                <ThemeProvider attribute="class">{children}</ThemeProvider>
             </body>
         </html>
     );
