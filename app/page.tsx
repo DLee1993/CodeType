@@ -3,13 +3,16 @@
 import { useEffect, useState } from "react";
 import { fetchCode, fetchQuotes, fetchWords } from "@/services/localFunctions";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import TypeThroughInput from "@/components/TypeThroughInput";
+import ThemeSelector from "@/components/ThemeSelector";
 
 export default function Home() {
     const [testType, setTestType] = useState<string>();
     const [testContent, setTestContent] = useState<string>();
     const [testLength, setTestLength] = useState<number>();
     const [generateNewTest, setGenerateNewTest] = useState<boolean>();
+    const { theme, setTheme } = useTheme();
 
     const refreshText = () => setGenerateNewTest(true);
 
@@ -23,10 +26,20 @@ export default function Home() {
         localStorage.setItem("testLength", string);
     };
 
-    //# Get the stored args
+    //# Set the theme
+    useEffect(() => {
+        if (theme) {
+            document.documentElement.className = theme;
+        }
+    }, [theme]);
+
+    //# Get the stored args and add the transition classes after mounting
     useEffect(() => {
         const storedTestType = localStorage.getItem("testType");
         const storedTestLength = localStorage.getItem("testLength");
+
+        document.body.classList.add("transition-colors");
+        document.body.classList.add("duration-300");
 
         if (storedTestType) {
             setTestType(storedTestType);
@@ -82,7 +95,9 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 15 ? "underline" : "text-foreground opacity-50"
+                                testLength === 15
+                                    ? "underline text-accent"
+                                    : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             15
@@ -90,7 +105,9 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 30 ? "underline" : "text-foreground opacity-50"
+                                testLength === 30
+                                    ? "underline text-accent"
+                                    : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             30
@@ -98,7 +115,9 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 60 ? "underline" : "text-foreground opacity-50"
+                                testLength === 60
+                                    ? "underline text-accent"
+                                    : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             60
@@ -106,18 +125,22 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 120 ? "underline" : "text-foreground opacity-50"
+                                testLength === 120
+                                    ? "underline text-accent"
+                                    : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             120
                         </li>
                     </ul>
-                    <div className="w-[1px] h-5 bg-foreground opacity-75"></div>
+                    <div className="w-[1px] h-5 bg-foreground"></div>
                     <ul className="flex justify-center items-center gap-x-4">
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "words" ? "underline" : "text-foreground opacity-50"
+                                testType === "words"
+                                    ? "underline text-accent"
+                                    : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             words
@@ -125,7 +148,9 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "quotes" ? "underline" : "text-foreground opacity-50"
+                                testType === "quotes"
+                                    ? "underline text-accent"
+                                    : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             quotes
@@ -133,7 +158,9 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
                             className={`${
-                                testType === "code" ? "underline" : "text-foreground opacity-50"
+                                testType === "code"
+                                    ? "underline text-accent"
+                                    : "text-foreground opacity-50"
                             } cursor-pointer`}
                         >
                             code
@@ -144,10 +171,12 @@ export default function Home() {
             <main>
                 <TypeThroughInput text={testContent!} refreshText={refreshText} />
             </main>
-            <footer className="min-h-20 flex justify-between items-center px-5 sm:px-10 py-5 sm:py-0">
-                <Link href={"https://github.com/DLee1993/CodeType#codetype-guide"} target="_blank">
+            <footer className="min-h-20 flex justify-center items-center gap-2">
+                <Link href={"https://github.com/DLee1993/CodeType#codetype-guide"} target="_blank" className="hover:text-accent hover:transition-colors">
                     help guide
                 </Link>
+                <p>/</p>
+                <ThemeSelector setTheme={setTheme} />
             </footer>
         </>
     );
