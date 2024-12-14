@@ -96,9 +96,10 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                     <div
                         className={`${
                             !isFocused && text ? "visible" : "hidden"
-                        } w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-foreground`}
+                        } w-full text-center absolute top-3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-foreground`}
                     >
-                        Click here to focus
+                        Click here or press{" "}
+                        <span className="bg-accent text-background py-1 px-2">tab</span> to focus
                     </div>
                     <article
                         ref={letterElements}
@@ -116,7 +117,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                             return (
                                 <span
                                     key={letter + index}
-                                    className={`${color} ${!isFocused && "blur-sm"}`}
+                                    className={`${color} ${!isFocused && "blur-md"}`}
                                 >
                                     {letter}
                                 </span>
