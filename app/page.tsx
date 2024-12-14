@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import TypeThroughInput from "@/components/TypeThroughInput";
 import ThemeSelector from "@/components/ThemeSelector";
+import HelpGuide from "@/components/HelpGuide";
 
 export default function Home() {
     const [testType, setTestType] = useState<string>();
@@ -85,7 +86,7 @@ export default function Home() {
 
     return (
         <>
-            <header className="min-h-20 flex flex-col sm:flex-row justify-between items-start sm:items-center px-5 sm:px-10 py-5 sm:py-0">
+            <header className="min-h-20 flex flex-col sm:flex-row justify-between items-start sm:items-center px-5">
                 <div>
                     <h1 className="text-lg font-semibold">Code-type</h1>
                     <sup>A minimalistic typing test</sup>
@@ -171,12 +172,19 @@ export default function Home() {
             <main>
                 <TypeThroughInput text={testContent!} refreshText={refreshText} />
             </main>
-            <footer className="min-h-20 flex justify-center items-center gap-2">
-                <Link href={"https://github.com/DLee1993/CodeType#codetype-guide"} target="_blank" className="hover:text-accent hover:transition-colors">
-                    help guide
+            <footer className="min-h-20 flex justify-between items-center px-5">
+                <section className="flex justify-center items-center gap-2">
+                    <HelpGuide />
+                    <p>/</p>
+                    <ThemeSelector setTheme={setTheme} />
+                </section>
+                <Link
+                    href={"https://github.com/DLee1993/CodeType#codetype-guide"}
+                    target="_blank"
+                    className="hover:text-accent hover:transition-colors"
+                >
+                    github
                 </Link>
-                <p>/</p>
-                <ThemeSelector setTheme={setTheme} />
             </footer>
         </>
     );
