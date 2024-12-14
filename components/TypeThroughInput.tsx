@@ -99,7 +99,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                         } w-full text-center absolute top-3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-foreground`}
                     >
                         Click here or press{" "}
-                        <span className="bg-accent text-background py-1 px-2">tab</span> to focus
+                        <span className="bg-accent text-white py-1 px-2">tab</span> to focus
                     </div>
                     <article
                         ref={letterElements}
