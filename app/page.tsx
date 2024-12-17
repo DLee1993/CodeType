@@ -87,14 +87,6 @@ export default function Home() {
                         <li
                             onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
                             className={`${
-                                testLength === 15 ? "underline text-accent" : "text-foreground"
-                            } cursor-pointer`}
-                        >
-                            15
-                        </li>
-                        <li
-                            onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
-                            className={`${
                                 testLength === 30 ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
@@ -115,6 +107,14 @@ export default function Home() {
                             } cursor-pointer`}
                         >
                             120
+                        </li>
+                        <li
+                            onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
+                            className={`${
+                                testLength === 250 ? "underline text-accent" : "text-foreground"
+                            } cursor-pointer`}
+                        >
+                            250
                         </li>
                     </ul>
                     <div className="w-[1px] h-5 bg-foreground"></div>
