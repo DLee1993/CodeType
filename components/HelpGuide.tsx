@@ -51,8 +51,8 @@ export default function HelpGuide() {
                                 <span className="ml-2">
                                     The numbers{" "}
                                     <span className="text-accent font-semibold">15, 30, 60, 120</span>{" "}
-                                    are the different lengths of text you can choose from, by
-                                    default it is <span className="text-accent font-semibold">15</span>
+                                    are the different charactrer lengths you can choose from, by
+                                    default it is <span className="text-accent font-semibold">30</span>
                                 </span>
                             </li>
                             <li>
