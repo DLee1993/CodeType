@@ -3,7 +3,7 @@ import useTyping, { CharStateType, PhaseType } from "react-typing-game-hook";
 
 const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text, refreshText }) => {
     const [duration, setDuration] = useState(0);
-    const [isFocused, setIsFocused] = useState(false);
+    const [, setIsFocused] = useState(false);
     const letterElements = useRef<HTMLDivElement>(null);
 
     const {
@@ -55,7 +55,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
     }, [phase]);
 
     return (
-        <section className="w-11/12 max-w-4xl mx-auto flex flex-col gap-10 items-center">
+        <section className="w-11/12 max-w-6xl mx-auto flex flex-col gap-10 items-center">
             {phase === PhaseType.Ended && startTime && endTime ? (
                 <section className="flex flex-col justify-center items-center gap-10">
                     <h2 className="text-lg font-semibold">Congratulations!</h2>
@@ -91,20 +91,8 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                     onKeyDown={(e) => handleKeyDown(e.key, e.ctrlKey)}
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
-                    className={`max-h-72 text-xl outline-none relative hover:cursor-text`}
+                    className={`max-h-72 text-xl 2xl:text-2xl outline-none relative hover:cursor-text`}
                 >
-                    <div
-                        className={`${
-                            !isFocused && text ? "visible" : "hidden"
-                        } w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-foreground`}
-                    >
-                        Click here{" "}
-                        <span className="hidden sm:inline-block">
-                            or press{" "}
-                            <span className="bg-accent text-background py-1 px-3 rounded-sm">tab</span>
-                        </span>{" "}
-                        to focus
-                    </div>
                     <article
                         ref={letterElements}
                         className="tracking-wide pointer-events-none select-none mb-4 focus-visible:outline-0"
@@ -115,14 +103,11 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                             const color =
                                 state === CharStateType.Incomplete
                                     ? "text-foreground"
-                                    : state === CharStateType.Correct
-                                    ? "text-accent"
-                                    : "text-red-500";
+                                    : state === CharStateType.Incorrect
+                                    ? "text-red-500"
+                                    : "text-accent";
                             return (
-                                <span
-                                    key={letter + index}
-                                    className={`${color} ${!isFocused && "blur-md"}`}
-                                >
+                                <span key={letter + index} className={`${color}`}>
                                     {letter}
                                 </span>
                             );
@@ -134,9 +119,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                                 left: cursorPosition.left,
                                 top: cursorPosition.top,
                             }}
-                            className={`${
-                                !isFocused && "hidden"
-                            } block absolute border-l-2 border-accent animate-pulsate transition-all duration-75`}
+                            className="block absolute border-l-2 border-accent animate-pulsate transition-all duration-75"
                         >
                             &nbsp;
                         </span>
