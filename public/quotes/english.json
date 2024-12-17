@@ -3,7 +3,7 @@
     "content": [
         {
             "id": 1,
-            "string": "The only limit to our realization of tomorrow is our doubts of today."
+            "string": "The only limit to our realization of tomorrow is our doubts of today. Let us move forward with strong and active faith."
         },
         {
             "id": 2,
@@ -16,7 +16,7 @@
         { "id": 4, "string": "Life is what happens when you're busy making other plans." },
         { "id": 5, "string": "You only live once, but if you do it right, once is enough." },
         { "id": 6, "string": "The purpose of our lives is to be happy." },
-        { "id": 7, "string": "Life is what happens to you while you're busy making other plans." },
+        { "id": 7, "string": "Success is not final, failure is not fatal: It is the courage to continue that counts." },
         {
             "id": 8,
             "string": "Many of life's failures are people who did not realize how close they were to success when they gave up."
@@ -28,7 +28,7 @@
         { "id": 10, "string": "The best way to predict your future is to create it." },
         { "id": 11, "string": "Life is short, and it is up to you to make it sweet." },
         { "id": 12, "string": "Do not let making a living prevent you from making a life." },
-        { "id": 13, "string": "Life itself is the most wonderful fairy tale." },
+        { "id": 13, "string": "In the end, we will remember not the words of our enemies, but the silence of our friends." },
         {
             "id": 14,
             "string": "The biggest adventure you can take is to live the life of your dreams."
