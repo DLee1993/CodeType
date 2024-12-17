@@ -76,7 +76,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                         </>
                     </p>
                     <button
-                        className="bg-background border border-accent text-foreground rounded-md px-6 py-2 hover:bg-accent hover:transition-colors"
+                        className="bg-background border border-accent text-foreground rounded-md px-6 py-2 hover:bg-accent hover:text-background hover:transition-colors"
                         onClick={() => {
                             resetTyping();
                             refreshText();
@@ -100,7 +100,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                     >
                         Click here{" "}
                         <span className="hidden sm:inline-block">
-                            or press <span className="bg-accent text-white py-1 px-2">tab</span>
+                            or press <span className="bg-accent text-background py-1 px-2">tab</span>
                         </span>{" "}
                         to focus
                     </div>
