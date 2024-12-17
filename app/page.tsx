@@ -55,11 +55,11 @@ export default function Home() {
                     setTestContent(randomWords);
                     break;
                 case "quotes":
-                    const quotes = await fetchQuotes(testLength);
+                    const quotes = await fetchQuotes();
                     setTestContent(quotes);
                     break;
                 case "code":
-                    const code = await fetchCode(testLength);
+                    const code = await fetchCode();
                     setTestContent(code);
                     break;
 
@@ -83,11 +83,15 @@ export default function Home() {
                     <sup>A minimalistic typing test</sup>
                 </div>
                 <div className="w-full max-w-sm sm:w-auto flex justify-between items-center gap-x-4">
-                    <ul className="flex justify-center items-center gap-x-4">
+                    <ul
+                        className={`flex justify-center items-center gap-x-4 ${
+                            testType === "words" ? "opacity-100" : "opacity-25 pointer-events-none"
+                        }`}
+                    >
                         <li
                             onClick={() => changeTestLength([1, 30])}
                             className={`${
-                                testLength[1] === 30 ? "underline text-accent" : "text-foreground"
+                                testLength[1] === 30 && testType === "words" ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             30
@@ -95,7 +99,7 @@ export default function Home() {
                         <li
                             onClick={() => changeTestLength([31, 60])}
                             className={`${
-                                testLength[1] === 60 ? "underline text-accent" : "text-foreground"
+                                testLength[1] === 60 && testType === "words" ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             60
@@ -103,7 +107,7 @@ export default function Home() {
                         <li
                             onClick={() => changeTestLength([61, 120])}
                             className={`${
-                                testLength[1] === 120 ? "underline text-accent" : "text-foreground"
+                                testLength[1] === 120 && testType === "words" ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             120
