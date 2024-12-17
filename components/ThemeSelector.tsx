@@ -42,7 +42,7 @@ export default function ThemeSelector() {
                         X
                     </button>
                 </aside>
-                <ul className="p-5 flex gap-4 flex-wrap mt-10">
+                <ul className="p-5 flex justify-center md:justify-start gap-4 flex-wrap mt-10">
                     {Themes.map((themeItem, i) => (
                         <li
                             key={i}
