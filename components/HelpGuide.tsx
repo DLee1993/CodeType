@@ -38,7 +38,7 @@ export default function HelpGuide() {
                             <li>
                                 Enter:{" "}
                                 <span className="ml-2">
-                                    Pressing enter refreshes the current typing game text
+                                    When focused on the game, pressing enter refreshes the current typing game text
                                 </span>
                             </li>
                         </ul>
@@ -50,8 +50,8 @@ export default function HelpGuide() {
                                 Numbers:{" "}
                                 <span className="ml-2">
                                     The numbers{" "}
-                                    <span className="text-accent font-semibold">15, 30, 60, 120</span>{" "}
-                                    are the different charactrer lengths you can choose from, by
+                                    <span className="text-accent font-semibold">30, 60, 120</span>{" "}
+                                    are the different charactrer lengths you can choose from for the words test type, by
                                     default it is <span className="text-accent font-semibold">30</span>
                                 </span>
                             </li>
