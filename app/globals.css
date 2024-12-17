@@ -14,6 +14,16 @@
     footer {
         @apply w-full;
     }
+
+    *::-webkit-scrollbar {
+        @apply w-1;
+    }
+    *::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+    *::-webkit-scrollbar-thumb {
+        @apply bg-accent;
+    }
 }
 
 /* Light theme */
