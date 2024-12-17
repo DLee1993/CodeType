@@ -1,13 +1,15 @@
 //* GET RANDOM ITEM FROM DATA
 
 function getRandomQuote(array: { id: number; string: string }[]) {
+    if (array.length < 1) return;
+
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex].string;
 }
 
 //? FETCH
 
-export const fetchCode = async (length: number[]) => {
+export const fetchCode = async () => {
     try {
         const response = await fetch("./codeBlocks/english.json");
         if (!response.ok) {
@@ -15,12 +17,7 @@ export const fetchCode = async (length: number[]) => {
         }
         const data = await response.json();
 
-        const filteredData = data["content"].filter((item: { id: string; string: string }) => {
-            const wordsInString = item.string.split(" ");
-            return wordsInString.length > length[0] && wordsInString.length <= length[1]
-        });
-
-        const random = getRandomQuote(filteredData);
+        const random = getRandomQuote(data["content"]);
 
         return random;
     } catch (error) {
@@ -28,7 +25,7 @@ export const fetchCode = async (length: number[]) => {
     }
 };
 
-export const fetchQuotes = async (length: number[]) => {
+export const fetchQuotes = async () => {
     try {
         const response = await fetch("./quotes/english.json");
         if (!response.ok) {
@@ -36,12 +33,7 @@ export const fetchQuotes = async (length: number[]) => {
         }
         const data = await response.json();
 
-        const filteredData = data["content"].filter((item: { id: string; string: string }) => {
-            const wordsInString = item.string.split(" ");
-            return wordsInString.length > length[0] && wordsInString.length <= length[1]
-        });
-
-        const random = getRandomQuote(filteredData);
+        const random = getRandomQuote(data["content"]);
 
         return random;
     } catch (error) {
