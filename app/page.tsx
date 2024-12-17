@@ -10,7 +10,7 @@ import HelpGuide from "@/components/HelpGuide";
 export default function Home() {
     const [testType, setTestType] = useState<string>();
     const [testContent, setTestContent] = useState<string>();
-    const [testLength, setTestLength] = useState<number>();
+    const [testLength, setTestLength] = useState<number[]>([]);
     const [generateNewTest, setGenerateNewTest] = useState<boolean>();
 
     const refreshText = () => setGenerateNewTest(true);
@@ -20,15 +20,15 @@ export default function Home() {
         localStorage.setItem("testType", string);
     };
 
-    const changeTestLength = (string: string) => {
-        setTestLength(Number(string));
-        localStorage.setItem("testLength", string);
+    const changeTestLength = (newLength: number[]) => {
+        setTestLength([Number(newLength[0]), Number(newLength[1])]);
+        localStorage.setItem("testLength", newLength.toString());
     };
 
     //# Get the stored args and add the transition classes after mounting
     useEffect(() => {
         const storedTestType = localStorage.getItem("testType");
-        const storedTestLength = localStorage.getItem("testLength");
+        const storedTestLength = localStorage.getItem("testLength")?.split(",");
 
         document.body.classList.add("transition-colors");
         document.body.classList.add("duration-300");
@@ -40,9 +40,9 @@ export default function Home() {
         }
 
         if (storedTestLength) {
-            setTestLength(Number(storedTestLength));
+            setTestLength([Number(storedTestLength[0]), Number(storedTestLength[1])]);
         } else {
-            setTestLength(15);
+            setTestLength([1, 30]);
         }
     }, []);
 
@@ -51,15 +51,15 @@ export default function Home() {
         const getData = async () => {
             switch (testType) {
                 case "words":
-                    const randomWords = await fetchWords(testLength!);
+                    const randomWords = await fetchWords(testLength);
                     setTestContent(randomWords);
                     break;
                 case "quotes":
-                    const quotes = await fetchQuotes(testLength!);
+                    const quotes = await fetchQuotes(testLength);
                     setTestContent(quotes);
                     break;
                 case "code":
-                    const code = await fetchCode(testLength!);
+                    const code = await fetchCode(testLength);
                     setTestContent(code);
                     break;
 
@@ -85,36 +85,28 @@ export default function Home() {
                 <div className="w-full max-w-sm sm:w-auto flex justify-between items-center gap-x-4">
                     <ul className="flex justify-center items-center gap-x-4">
                         <li
-                            onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
+                            onClick={() => changeTestLength([1, 30])}
                             className={`${
-                                testLength === 30 ? "underline text-accent" : "text-foreground"
+                                testLength[1] === 30 ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             30
                         </li>
                         <li
-                            onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
+                            onClick={() => changeTestLength([31, 60])}
                             className={`${
-                                testLength === 60 ? "underline text-accent" : "text-foreground"
+                                testLength[1] === 60 ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             60
                         </li>
                         <li
-                            onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
+                            onClick={() => changeTestLength([61, 120])}
                             className={`${
-                                testLength === 120 ? "underline text-accent" : "text-foreground"
+                                testLength[1] === 120 ? "underline text-accent" : "text-foreground"
                             } cursor-pointer`}
                         >
                             120
-                        </li>
-                        <li
-                            onClick={(e) => changeTestLength(e.currentTarget.innerHTML)}
-                            className={`${
-                                testLength === 250 ? "underline text-accent" : "text-foreground"
-                            } cursor-pointer`}
-                        >
-                            250
                         </li>
                     </ul>
                     <div className="w-[1px] h-5 bg-foreground"></div>

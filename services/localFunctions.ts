@@ -7,7 +7,7 @@ function getRandomQuote(array: { id: number; string: string }[]) {
 
 //? FETCH
 
-export const fetchCode = async (length: number) => {
+export const fetchCode = async (length: number[]) => {
     try {
         const response = await fetch("./codeBlocks/english.json");
         if (!response.ok) {
@@ -17,7 +17,7 @@ export const fetchCode = async (length: number) => {
 
         const filteredData = data["content"].filter((item: { id: string; string: string }) => {
             const wordsInString = item.string.split(" ");
-            return wordsInString.length <= length;
+            return wordsInString.length > length[0] && wordsInString.length <= length[1]
         });
 
         const random = getRandomQuote(filteredData);
@@ -28,7 +28,7 @@ export const fetchCode = async (length: number) => {
     }
 };
 
-export const fetchQuotes = async (length: number) => {
+export const fetchQuotes = async (length: number[]) => {
     try {
         const response = await fetch("./quotes/english.json");
         if (!response.ok) {
@@ -38,7 +38,7 @@ export const fetchQuotes = async (length: number) => {
 
         const filteredData = data["content"].filter((item: { id: string; string: string }) => {
             const wordsInString = item.string.split(" ");
-            return wordsInString.length <= length;
+            return wordsInString.length > length[0] && wordsInString.length <= length[1]
         });
 
         const random = getRandomQuote(filteredData);
@@ -49,7 +49,7 @@ export const fetchQuotes = async (length: number) => {
     }
 };
 
-export const fetchWords = async (length: number) => {
+export const fetchWords = async (length: number[]) => {
     const words: string[] = [];
 
     try {
@@ -59,7 +59,7 @@ export const fetchWords = async (length: number) => {
         }
         const data = await response.json();
 
-        while (words.length <= length - 1) {
+        while (words.length <= length[1]) {
             const randomIndex = Math.floor(Math.random() * data["content"].length);
             const num = data["content"][randomIndex];
             if (!words.includes(num)) {

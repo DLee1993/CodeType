@@ -91,16 +91,17 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                     onKeyDown={(e) => handleKeyDown(e.key, e.ctrlKey)}
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
-                    className={`text-xl outline-none relative hover:cursor-text`}
+                    className={`max-h-72 text-xl outline-none relative hover:cursor-text`}
                 >
                     <div
                         className={`${
                             !isFocused && text ? "visible" : "hidden"
-                        } w-full text-center absolute top-3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-foreground`}
+                        } w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base pointer-events-none text-foreground`}
                     >
                         Click here{" "}
                         <span className="hidden sm:inline-block">
-                            or press <span className="bg-accent text-background py-1 px-2">tab</span>
+                            or press{" "}
+                            <span className="bg-accent text-background py-1 px-3 rounded-sm">tab</span>
                         </span>{" "}
                         to focus
                     </div>
