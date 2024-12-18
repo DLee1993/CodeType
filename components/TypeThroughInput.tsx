@@ -3,7 +3,7 @@ import useTyping, { CharStateType, PhaseType } from "react-typing-game-hook";
 
 const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text, refreshText }) => {
     const [duration, setDuration] = useState(0);
-    const [, setIsFocused] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
     const letterElements = useRef<HTMLDivElement>(null);
 
     const {
@@ -56,6 +56,12 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
 
     return (
         <section className="w-11/12 max-w-6xl mx-auto flex flex-col gap-10 items-center">
+            {!isFocused && (
+                <p className="absolute top-28">
+                    Click the text or press <span className="text-accent font-bold">TAB</span> to
+                    focus
+                </p>
+            )}
             {phase === PhaseType.Ended && startTime && endTime ? (
                 <section className="flex flex-col justify-center items-center gap-10">
                     <h2 className="text-lg font-semibold">Congratulations!</h2>
@@ -107,7 +113,10 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                                     ? "text-red-500"
                                     : "text-accent";
                             return (
-                                <span key={letter + index} className={`${color}`}>
+                                <span
+                                    key={letter + index}
+                                    className={`${color} ${!isFocused && "opacity-50"}`}
+                                >
                                     {letter}
                                 </span>
                             );
@@ -119,7 +128,9 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                                 left: cursorPosition.left,
                                 top: cursorPosition.top,
                             }}
-                            className="block absolute border-l-2 border-accent animate-pulsate transition-all duration-75"
+                            className={`${
+                                !isFocused && "hidden"
+                            } block absolute border-l-2 border-accent animate-pulsate transition-all duration-75`}
                         >
                             &nbsp;
                         </span>
