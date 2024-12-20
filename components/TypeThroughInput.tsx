@@ -55,9 +55,9 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
     }, [phase]);
 
     return (
-        <section className="w-11/12 max-w-6xl mx-auto flex flex-col gap-10 items-center">
-            {!isFocused && (
-                <p className="absolute top-28">
+        <section className="w-11/12 max-w-6xl mx-auto flex flex-col gap-10 items-center relative">
+            {!isFocused && text && (
+                <p className="absolute top-1/2 -translate-y-1/2 z-50">
                     Click the text or press <span className="text-accent font-bold">TAB</span> to
                     focus
                 </p>
@@ -97,7 +97,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                     onKeyDown={(e) => handleKeyDown(e.key, e.ctrlKey)}
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
-                    className={`max-h-72 text-xl 2xl:text-2xl outline-none relative hover:cursor-text`}
+                    className={`max-h-72 max-w-4xl text-xl 2xl:text-2xl outline-none relative hover:cursor-text`}
                 >
                     <article
                         ref={letterElements}
@@ -115,7 +115,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                             return (
                                 <span
                                     key={letter + index}
-                                    className={`${color} ${!isFocused && "opacity-50"}`}
+                                    className={`${color} ${!isFocused && "opacity-25 blur-sm"}`}
                                 >
                                     {letter}
                                 </span>
