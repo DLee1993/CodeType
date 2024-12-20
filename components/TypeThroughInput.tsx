@@ -57,9 +57,8 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
     return (
         <section className="w-11/12 max-w-6xl mx-auto flex flex-col gap-10 items-center relative">
             {!isFocused && text && (
-                <p className="absolute top-1/2 -translate-y-1/2 z-50">
-                    Click the text or press <span className="text-accent font-bold">TAB</span> to
-                    focus
+                <p className="absolute top-1/2 -translate-y-1/2 z-50 pointer-events-none">
+                    Click or press <span className="text-accent font-bold">TAB</span> to focus
                 </p>
             )}
             {phase === PhaseType.Ended && startTime && endTime ? (
@@ -101,7 +100,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                 >
                     <article
                         ref={letterElements}
-                        className="tracking-wide pointer-events-none select-none mb-4 focus-visible:outline-0"
+                        className="tracking-wide pointer-events-none select-none focus-visible:outline-0"
                         tabIndex={0}
                     >
                         {text?.split("").map((letter, index) => {
@@ -115,7 +114,9 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                             return (
                                 <span
                                     key={letter + index}
-                                    className={`${color} ${!isFocused && "opacity-25 blur-sm"}`}
+                                    className={`${color} ${
+                                        !isFocused && "opacity-25 blur-sm transition-all"
+                                    }`}
                                 >
                                     {letter}
                                 </span>
