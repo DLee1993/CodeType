@@ -1,6 +1,6 @@
 export const Themes = [
-    { name: "light-theme", background: "#FFFFFF", foreground: "#333333", accent: "#9ca3af" },
-    { name: "dark-theme", background: "#030712", foreground: "#FFFFFF", accent: "#9ca3af" },
+    { name: "light-theme", background: "#FFFFFF", foreground: "#333333", accent: "#27467a" },
+    { name: "dark-theme", background: "#030712", foreground: "#FFFFFF", accent: "#27467a" },
 
     { name: "ocean-blue-theme", background: "#1B3A4B", foreground: "#D9D9D9", accent: "#3C91E6" },
     { name: "solar-flare-theme", background: "#2D1E2F", foreground: "#EBEBEB", accent: "#FF9800" },
