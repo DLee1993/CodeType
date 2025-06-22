@@ -131,7 +131,7 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                             }}
                             className={`${
                                 !isFocused && "hidden"
-                            } block absolute border-l-2 border-accent animate-pulsate transition-all duration-75`}
+                            } block absolute border-l-2 border-accent transition-all duration-75`}
                         >
                             &nbsp;
                         </span>
