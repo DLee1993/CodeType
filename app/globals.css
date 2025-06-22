@@ -137,3 +137,9 @@
     --color: #ffffff;
     --accent-color: #ffbc42;
 }
+
+@layer base {
+    body {
+        @apply bg-background text-foreground;
+    }
+}
