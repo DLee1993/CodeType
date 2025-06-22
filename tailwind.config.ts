@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
+    darkMode: ["class"],
     content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,15 +9,6 @@ export default {
     ],
     theme: {
         extend: {
-            animation: {
-                pulsate: "pulsate 1.2s linear infinite",
-            },
-            keyframes: {
-                pulsate: {
-                    "0%, 100%": { scale: "1" },
-                    "50%": { opacity: "0.75", scale: "0.9" },
-                },
-            },
             colors: {
                 background: "var(--background-color)",
                 foreground: "var(--color)",
@@ -24,5 +16,5 @@ export default {
             },
         },
     },
-    plugins: [],
+    plugins: [require("tailwindcss-animate")],
 } satisfies Config;
