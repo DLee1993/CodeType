@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import React, { FC, useEffect, useMemo, useRef, useState } from "react";
 import useTyping, { CharStateType, PhaseType } from "react-typing-game-hook";
 
@@ -62,33 +63,32 @@ const TypeThroughInput: FC<{ text: string; refreshText: () => void }> = ({ text,
                 </p>
             )}
             {phase === PhaseType.Ended && startTime && endTime ? (
-                <section className="flex flex-col justify-center items-center gap-10">
+                <section className="w-screen flex flex-col justify-center items-center gap-20">
                     <h2 className="text-lg font-semibold">Congratulations!</h2>
 
-                    <p className="min-h-5 flex gap-x-4 my-10">
-                        <>
-                            <span className="mr-4">
-                                <span className="text-accent">WPM:</span>{" "}
-                                {Math.round(((60 / duration) * correctChar) / 5)}
-                            </span>
-                            <span className="mr-4">
-                                <span className="text-accent">Accuracy:</span>{" "}
-                                {((correctChar / text.length) * 100).toFixed(2)}%
-                            </span>
-                            <span className="mr-4">
-                                <span className="text-accent">Duration:</span> {duration}s
-                            </span>
-                        </>
-                    </p>
-                    <button
-                        className="bg-background border border-accent text-foreground rounded-md px-6 py-2 hover:bg-accent hover:text-background hover:transition-colors"
+                    <ul className="flex justify-center items-center gap-5">
+                        <li className="flex gap-2">
+                            <p>Words per minute:</p>
+                            <p>{Math.round(((60 / duration) * correctChar) / 5)}</p>
+                        </li>
+                        <li className="flex gap-2">
+                            <p>Accuracy:</p>
+                            <p>{((correctChar / text.length) * 100).toFixed(2)}%</p>
+                        </li>
+                        <li className="flex gap-2">
+                            <p>Duration:</p>
+                            <p>{duration}s</p>
+                        </li>
+                    </ul>
+                    <Button
+                        className="bg-foreground text-background rounded-md hover:bg-accent hover:text-background hover:transition-colors"
                         onClick={() => {
                             resetTyping();
                             refreshText();
                         }}
                     >
                         Try again
-                    </button>
+                    </Button>
                 </section>
             ) : (
                 <section
