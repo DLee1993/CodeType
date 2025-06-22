@@ -5,7 +5,6 @@ import { Themes } from "@/themes";
 import { useTheme } from "next-themes";
 
 export default function ThemeSelector() {
-    const [selectThemeOpen, isSelectThemeOpen] = useState<boolean>(false);
     const [mounted, setMounted] = useState(false);
     const { theme, setTheme } = useTheme();
 
@@ -13,7 +12,6 @@ export default function ThemeSelector() {
         setMounted(true);
     }, []);
 
-    //# Set the theme
     useEffect(() => {
         if (theme) {
             document.documentElement.className = theme;
@@ -21,50 +19,38 @@ export default function ThemeSelector() {
     }, [theme]);
 
     return (
-        <section>
-            <button
-                onClick={() => isSelectThemeOpen(true)}
-                className="hover:text-accent hover:transition-colors"
-            >
-                themes
-            </button>
-            <section
-                className={`${
-                    selectThemeOpen ? "visible" : "hidden"
-                } bg-background text-foreground w-full h-screen z-50 absolute top-0 left-0 overflow-x-hidden overflow-y-auto`}
-            >
-                <aside className="p-5 w-full flex justify-between items-center">
-                    <h2>Select your favourite theme</h2>
-                    <button
-                        onClick={() => isSelectThemeOpen(false)}
-                        className="bg-accent text-background px-4 py-1 rounded-sm"
+        <section className="overflow-x-scroll">
+            <ul className="flex justify-start items-center gap-10 w-[1900px] pt-2 pb-5 px-2">
+                {Themes.map((themeItem, i) => (
+                    <li
+                        key={i}
+                        className="relative flex justify-center items-center size-12 rounded-full cursor-pointer"
+                        onClick={() => setTheme(themeItem.name)}
+                        style={{
+                            border: `2px solid ${themeItem.accent}`,
+                            outline: `1px solid ${
+                                mounted && theme === themeItem.name && `${themeItem.accent}`
+                            }`,
+                            outlineOffset: `${mounted && theme === themeItem.name ? "5px" : "0px"}`,
+                        }}
                     >
-                        X
-                    </button>
-                </aside>
-                <ul className="p-5 flex justify-center md:justify-start gap-4 flex-wrap mt-10">
-                    {Themes.map((themeItem, i) => (
-                        <li
-                            key={i}
-                            className="flex justify-center items-center cursor-pointer rounded-md w-40 h-20"
-                            onClick={() => setTheme(themeItem.name)}
+                        <div
+                            className="absolute top-0 left-0 w-full h-1/2"
                             style={{
-                                backgroundColor: `${themeItem.background}`,
-                                color: `${themeItem.foreground}`,
-                                border: `1px solid ${themeItem.accent}`,
-                                outline: `1px solid ${
-                                    mounted && theme === themeItem.name && `${themeItem.accent}`
-                                }`,
-                                outlineOffset: `${
-                                    mounted && theme === themeItem.name ? "5px" : "0px"
-                                }`,
+                                borderRadius: "5rem 5rem 0 0",
+                                backgroundColor: themeItem.background,
                             }}
-                        >
-                            {themeItem.name.slice(0, -6)}
-                        </li>
-                    ))}
-                </ul>
-            </section>
+                        ></div>
+                        <div
+                            className="absolute bottom-0 left-0 w-full h-1/2"
+                            style={{
+                                borderRadius: "0 0 5rem 5rem",
+                                backgroundColor: themeItem.foreground,
+                            }}
+                        ></div>
+                    </li>
+                ))}
+            </ul>
         </section>
     );
 }

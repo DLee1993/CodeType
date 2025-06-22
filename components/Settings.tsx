@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { BookA, CircleCheck, Speech, Binary } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import { useEffect, useState } from "react";
+import ThemeSelector from "@/components/ThemeSelector";
 
 interface Props {
     testType: string | undefined;
@@ -86,7 +87,7 @@ export default function Settings({ setTestType, setTestLength, testType, testLen
                                         handleCheckedChange(index, Boolean(checked))
                                     }
                                     onClick={() => changeTestType({ string: option.value })}
-                                    className="relative ring-[1px] ring-border rounded-lg px-4 py-3 text-start text-muted-foreground data-[state=checked]:ring-2 data-[state=checked]:ring-primary data-[state=checked]:text-primary"
+                                    className="relative ring-[1px] ring-foreground rounded-lg px-4 py-3 text-start text-muted-foreground data-[state=checked]:ring-1 data-[state=checked]:ring-accent data-[state=checked]:text-primary"
                                 >
                                     <option.icon className="mb-3" />
                                     <span className="font-medium tracking-tight">
@@ -109,7 +110,7 @@ export default function Settings({ setTestType, setTestLength, testType, testLen
                                         className={`${
                                             testLength[1] === 30 && testType === "words"
                                                 ? "bg-accent text-background"
-                                                : "bg-slate-200 text-foreground"
+                                                : "bg-transparent border-[1px] border-accent text-foreground"
                                         } cursor-pointer`}
                                     >
                                         30
@@ -122,7 +123,7 @@ export default function Settings({ setTestType, setTestLength, testType, testLen
                                         className={`${
                                             testLength[1] === 60 && testType === "words"
                                                 ? "bg-accent text-background"
-                                                : "bg-slate-200 text-foreground"
+                                                : "bg-transparent border-[1px] border-accent text-foreground"
                                         } cursor-pointer`}
                                     >
                                         60
@@ -135,7 +136,7 @@ export default function Settings({ setTestType, setTestLength, testType, testLen
                                         className={`${
                                             testLength[1] === 120 && testType === "words"
                                                 ? "bg-accent text-background"
-                                                : "bg-slate-100 text-foreground"
+                                                : "bg-transparent border-[1px] border-accent text-foreground"
                                         } cursor-pointer`}
                                     >
                                         120
@@ -144,76 +145,12 @@ export default function Settings({ setTestType, setTestLength, testType, testLen
                             </ul>
                         </section>
                     )}
+                    <section id="theme select" className="space-y-4">
+                        <h2 className="text-sm font-semibold">Select your theme</h2>
+                        <ThemeSelector />
+                    </section>
                 </section>
             </SheetContent>
         </Sheet>
     );
-}
-
-{
-    /* <div className="w-full max-w-sm sm:w-auto flex justify-between items-center gap-x-4">
-                    <ul
-                        className={`flex justify-center items-center gap-x-4 ${
-                            testType === "words" ? "opacity-100" : "opacity-25 pointer-events-none"
-                        }`}
-                    >
-                        <li
-                            onClick={() => changeTestLength([1, 30])}
-                            className={`${
-                                testLength[1] === 30 && testType === "words"
-                                    ? "underline text-accent"
-                                    : "text-foreground"
-                            } cursor-pointer`}
-                        >
-                            30
-                        </li>
-                        <li
-                            onClick={() => changeTestLength([31, 60])}
-                            className={`${
-                                testLength[1] === 60 && testType === "words"
-                                    ? "underline text-accent"
-                                    : "text-foreground"
-                            } cursor-pointer`}
-                        >
-                            60
-                        </li>
-                        <li
-                            onClick={() => changeTestLength([61, 120])}
-                            className={`${
-                                testLength[1] === 120 && testType === "words"
-                                    ? "underline text-accent"
-                                    : "text-foreground"
-                            } cursor-pointer`}
-                        >
-                            120
-                        </li>
-                    </ul>
-                    <div className="w-[1px] h-5 bg-foreground"></div>
-                    <ul className="flex justify-center items-center gap-x-4">
-                        <li
-                            onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
-                            className={`${
-                                testType === "words" ? "underline text-accent" : "text-foreground"
-                            } cursor-pointer`}
-                        >
-                            words
-                        </li>
-                        <li
-                            onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
-                            className={`${
-                                testType === "quotes" ? "underline text-accent" : "text-foreground"
-                            } cursor-pointer`}
-                        >
-                            quotes
-                        </li>
-                        <li
-                            onClick={(e) => changeTestType(e.currentTarget.innerHTML)}
-                            className={`${
-                                testType === "code" ? "underline text-accent" : "text-foreground"
-                            } cursor-pointer`}
-                        >
-                            code
-                        </li>
-                    </ul>
-                </div> */
 }

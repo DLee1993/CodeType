@@ -16,13 +16,13 @@
     }
 
     *::-webkit-scrollbar {
-        @apply w-1;
+        @apply w-[4px] h-[4px];
     }
     *::-webkit-scrollbar-track {
         @apply bg-transparent;
     }
     *::-webkit-scrollbar-thumb {
-        @apply bg-accent;
+        @apply bg-foreground rounded-full;
     }
 }
 
