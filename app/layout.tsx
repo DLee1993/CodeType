@@ -23,10 +23,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body
-                className={`min-h-screen flex flex-col justify-between items-center bg-background text-foreground antialiased ${inter.className}`}
-            >
-                <ThemeProvider attribute="class" defaultTheme="light-theme">{children}</ThemeProvider>
+            <body className={`bg-background text-foreground antialiased ${inter.className}`}>
+                <ThemeProvider attribute="class" defaultTheme="light-theme">
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );
